@@ -1,0 +1,25 @@
+syntax on
+"set cursorline
+"set number
+set hlsearch
+set tags=./tags,tags;
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set filetype=c
+filetype indent on
+set autoindent
+set smartindent
+set cindent
+set textwidth=80
+set cino=>2s,^-2,{1s,n-2,e2s,t0
+cscope add cscope.out
+set ruler
+set laststatus=2
+set statusline=%<%F\ %=L:%l/%L\ (%p%%)\ C:%2c
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif
+endif
+let c_space_errors = 1
+
+

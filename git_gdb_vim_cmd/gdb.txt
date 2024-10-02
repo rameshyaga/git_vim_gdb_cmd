@@ -1,0 +1,1163 @@
+This is Bugzilla
+
+Goto bug # 
+ Go
+Bug #17310: OFE crash	Last modified: 2010-03-09 17:07:27 CETBug List: (86 of 200) First Last Prev Next   Show last search results      Search page      Enter new bug
+Bug#:	17310
+Product:	 	 
+Component:	 	 
+Status:	VERIFIED
+Resolution:	FIXED
+Assigned To:	Magnus Larsson <mla@packetfront.com>
+Hardware:	 	 
+OS:	 	 
+Branches:	
+VER/FIX: master (#17772)
+Resolution   	Milestone  
+VER/FIX: sh.ibos-3.15-16 (#17771)
+Resolution   	Milestone  
+VER/FIX: sh.ibos-3.19-20 (#18468)
+Resolution   	Milestone  
+Add branch
+Priority:	 	 
+Severity:	 	 
+Target Milestone:	  Use child bug milestone instead!	 
+Reporter:	
+Add CC:	Abdullah Khalid <abdullah.khalid@netnordic.com>Abhishek Yadav <abhyad@waystream.com>Amjad Jabali <amjad.jabali@netnordic.com>Anders Eriksson <anderi@waystream.com>Anders Wallman <andwal@waystream.com>Andreas Papp <andpap@waystream.com>Anilkumar Varala <anivar@waystream.com>Baburajiv Pinapati <babpin@waystream.com>Christer Andersson <christer.andersson@netnordic.com>David Evans <daveva@waystream.com>Ebrahim Maskati <ebrahim.maskati@netnordic.com>Emil BrÃ¤nn <emil.brann@netnordic.com>Erik Anggard <eriang@waystream.com>Erik test user <eriang-tst@packetfront.net>Erik Testuser <erik.anggard@gmail.com>Fahad Bin Nafey <fahbin@waystream.com>Farzad Abtahi <farzad.abtahi@netnordic.com>Foo Bar <foobar@waystream.com>Fredrik Nyman <frenym@waystream.com>Glenn Ohlsson <glenn.ohlsson@netnordic.com>Harikiran Vuttoori <harvut@waystream.com>heqi <heqi@waystream.com>Håkan Dalén <hakdal@waystream.com>Jan Bjornsjo <janbjo@waystream.com>Johnny Hedlund <johhed@waystream.com>Jonas Jacobsson <jonas.jacobsson@netnordic.com>Jörgen Nilsson <jorgen.nilsson@netnordic.com>Krishnachaitanya Bedaduri <kribed@waystream.com>Lewis Lu <lewilu@waystream.com>Magnus Liden <magnus.liden@netnordic.com>Mahesh Jadhav <mahjad@waystream.com>Mats Mejbert <mats.mejbert@netnordic.com>Miguel Garcia <miguel.garcia@netnordic.com>Mohan Krishna <mohkri@waystream.com>Naga Somisetty <nagsom@waystream.com>Per Linusson <per.linusson@netnordic.com>Philip Mattsson <philip.mattsson@netnordic.com>Philip Xie <phixie@waystream.com>phixie <philip.xie@waystream.com>PU Access <rd-access@waystream.com>R&D Maintenance Team <rd-maintenance@waystream.com>Ramesh Yaga <ramyag@waystream.com>Ravi Veldanda <ravvel@waystream.com>RD Systemtest <rd-systemtest@packetfront.net>Rocky Wang <rocwan@waystream.com>Rong Jian <ronjia@waystream.com>Sander Petersson <sander.petersson@netnordic.com>Sathish Raman <satram@waystream.com>Satya Prasad <satpra@waystream.com>Sravanthi Jammala <srajam@waystream.com>Srikanth Kacham <srikac@waystream.com>Srividya Bandi <sriban@waystream.com>Stefan Tegenfalk <steteg@packetfront.net>TAC-team <tac-team@netnordic.se>Vladimir Pasovic <vladimir.pasovic@netnordic.com>Xu Feng <xufeng@waystream.com>Yaroslav Retiunskyi <yarret@waystream.com>Yogeswar Konalam <yogkon@waystream.com>
+CC:	anderieriang 
+Remove selected CCs 
+QA Contact:	
+URL:	
+Summary:	
+OFE crash
+Customer:	 
+ Show customers
+Keywords:	
+noreleasenote, parent_version_bug, systemtest
+
+SW estimate	Inv estimate
+
+4.0
+ 
+0.0
+
+Attachment	Type	Created	Size	Actions
+Create a New Attachment (proposed patch, testcase, etc.)	View All
+
+Bug 17310 depends on:	VER/FIX: 17771 VER/FIX: 17772 VER/FIX: 18468	
+17771, 17772, 18468
+Show dependency tree 
+Show dependency graph
+Bug 17310 blocks:		
+
+Additional Comments: (Don't forget to line break!) 
+ 
+ 
+  Add ramyag to CC list 
+
+Release notes 1 (known issue):
+
+ 
+ Release note 1 approved by technical writer 
+
+Release notes 2 (resolved issue):
+
+ 
+ Release note 2 approved by technical writer 
+
+ Development bug (no release note required) 
+ No release note info (too little known for a useful RN) 
+ Reproducible 
+
+
+ Leave as VERIFIED FIXED 
+ Reopen bug 
+ Mark bug as CLOSED 
+Commit
+View Bug Activity   |   Format For Printing   |   Clone This Bug   |   coredb   |   sh-coredb
+
+Description:  [reply]	Opened: 2009-03-16 08:22 CET
+ Version: 3.19.0-ED-RC3
+Impact: 5
+Probability: 2
+
+Crash for unknown reason. Corefile and corescan in bugdir.
+
+Running test action:
+Client_Profile_VPN_Inet, action 7:
+Pre-test: Use Internet - VPN spoke single tagged - Test run (default 3600 seconds)
+http://bhutan.lab.packetfront.com:5050/spec_simple.php?spec_id=71122
+
+
+Host: core-p
+Address: 10.66.97.2
+Core file: /opt/packetfront/becs3/roots/sm/ibos-asr5k/core/10.105.101.3_ibos-asr5k-3.19.0-ED-RC3.ofe.core.49bbf51a_2T-cell5P-1
+ASR: BTU5-2
+Timestamp: 49bbf51a
+Unixtime: 1237054746
+Human readable time: 2009-03-14 19:19:06 CET
+
+*******************************************************************
+File:                /mnt/builder-bugs/ucmon/10.105.101.3_ibos-asr5k-3.19.0-ED-RC3.ofe.core.49bbf51a_2T-cell5P-1
+Type:                iBOS OFE core file
+iBOS version string: ibos-asr5k-3.19.0-ED-RC3
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Failed to read MAC in core file, trying to dig out info:
+      1 ibos-asr5k-3.19.0-ED-RC3
+
+--- Result ---
+
+The core file did NOT match any existing bug.
+Open a new bug, create a directory /home/builder/bugs/<new-bug-id> and move the files 10.105.101.3_ibos-asr5k-3.19.0-ED-RC3.ofe.core.49bbf51a_2T-cell5P-1 and 10.105.101.3_ibos-asr5k-3.19.0-ED-RC3.ofe.core.49bbf51a_2T-cell5P-1.cscan there.
+Copy the output above into a comment of the new bug.
+
+*******************************************************************
+
+------- Comment #1 From Anders Eriksson 2009-03-16 09:35 CET [reply][delete] ------- 
+CC added: anderi@packetfront.com 
+Assignee removed: anderi@packetfront.com, added: mla@packetfront.com 
+ Mla is on this weird case!
+
+------- Comment #2 From Magnus Larsson 2009-03-16 09:41 CET [reply][delete] ------- 
+Assignee removed: mla@packetfront.com, added: eriang@packetfront.com 
+ Erik, Do you have any clues on this? Me and Anders are saying this cannot be, 
+or can it? Smells hw-error IMHO.. From what I can see the variable is stored
+on the stack.. for like 14 instructions, I find it hard to beleive that 
+something comes in and or:s just 1 bit to a perfectly valid pointer?
+
+Analysis
+
+Everything is very strange, the last bv[4] seems right with the exception of a 
+high bit. BUT, this cannot happen in the code path.
+
+look, bv is set in first loop.. if d == 4:
+
+  bv[d] = ofe_v4filter_vec + bt[x].bt.bvptr;
+
+From declaration of ofe_v4filter_t (*bt):
+
+	uint32_t bvptr;   /* pointer to bit-vector */
+
+Its a 32 bit counter!, and we add that to ofe_v4filter_vec which looks ok
+
+(gdb) p ofe_v4filter_vec
+$43 = 0x5543600
+
+and then bv[4]
+
+(gdb) p bv[4]
+$46 = (ofe_v4filter_t *) 0x205543600
+(gdb) 
+
+Crazyness.. 
+
+Backtrace from code.
+
+(gdb) bt
+#0  0x0000000000000000 in ?? ()
+#1  0x0000000004009fb8 in ipv4_filter (f=0x545ca34, lv=0xc000000000000000)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/o
+cteon/ofe/net/ipv4.c:148
+#2  0x000000000400ae1c in ipv4_learn (pkt=0x5be2700, e=0x1, r=0x5261840)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/o
+cteon/ofe/net/ipv4.c:827
+#3  0x0000000004009794 in fastpath_ipv4_input (pkt=0x5be2700, 
+    imp_u64=4785147618525184, bucket=37245, eh=0x4b8f780)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/o
+cteon/ofe/net/fastpath.c:1616
+#4  0x0000000004009e00 in fastpath ()
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/o
+cteon/ofe/net/fastpath.c:1882
+#5  0x0000000004000df8 in init (mem=0x5666000)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/o
+cteon/ofe/init.c:202
+#6  0x0000000000000000 in ?? ()
+(gdb) f 1
+#1  0x0000000004009fb8 in ipv4_filter (f=0x545ca34, lv=0xc000000000000000)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC3/ibos/sys/dev/octeon/ofe/net/ipv4.c:148
+148                     u64 = bv[0][d].u64 & bv[1][d].u64 & bv[2][d].u64 &
+(gdb) list -
+138                     x = ipv4_filter_btable_lookup(bt, lv[d], f->ov4f_dlen[d]);
+139                     bv[d] = ofe_v4filter_vec + bt[x].bt.bvptr;
+140             }
+141
+142             /* Scan bitvector to find first matching rule */
+143
+144             r = -1;
+145
+146             for(d = 0; d < f->ov4f_bvlen; d++) {
+147
+(gdb) list
+148                     u64 = bv[0][d].u64 & bv[1][d].u64 & bv[2][d].u64 &
+149                         bv[3][d].u64 & bv[4][d].u64;
+150
+151                     if(u64) {
+152                             r =  __builtin_clzll(u64) + d * 64;
+153                             break;
+154                     }
+155             }
+156
+157             if(r == -1)
+(gdb) p bv
+$42 = {0x5546e60, 0x5546e80, 0x5546e80, 0x5546e90, 0x205543600}
+(gdb) 
+
+------- Comment #3 From Erik Anggard 2009-03-17 08:41 CET [reply][delete] ------- 
+CC added: eriang@packetfront.com 
+Assignee removed: eriang@packetfront.com, added: anderi@packetfront.com 
+ But you miss one thing, mla: pointer arithmetics. So, it can happen in the
+current code path if bt[x].bt.bvptr = 0x40000000 (which is a valid uint32_t 
+value even if it is not a valid value for bvptr).
+
+Look at code where bv[4] is set:
+
+	for(d = 0; d < 5; d++) {
+		bt = ofe_v4filter_vec + f->ov4f_doffset[d];
+		x = ipv4_filter_btable_lookup(bt, lv[d], f->ov4f_dlen[d]);
+		bv[d] = ofe_v4filter_vec + bt[x].bt.bvptr;
+	}
+
+
+First calc bv[0]:
+(gdb) p/x f->ov4f_doffset[0]
+$63 = 0x700
+(gdb) set $bt = ofe_v4filter_vec + f->ov4f_doffset[0]
+(gdb) p f->ov4f_dlen[0]
+$64 = 2
+[Ok, so x is either 0 or 1]
+(gdb) p/x $bt[0].bt.bvptr
+$65 = 0x70c
+(gdb)  p/x $bt[1].bt.bvptr
+$66 = 0x70d
+[Let's try 0]
+(gdb) p ofe_v4filter_vec + $bt[0].bt.bvptr
+$67 = (ofe_v4filter_t *) 0x5546e60
+(gdb) p bv[0]
+$68 = (ofe_v4filter_t *) 0x5546e60
+(gdb) 
+So this looks ok.
+
+Now try bv[4]:
+(gdb) p/x f->ov4f_doffset[4]
+$68 = 0x708
+((gdb) set $bt = ofe_v4filter_vec + f->ov4f_doffset[4] 
+(gdb) p f->ov4f_dlen[4]
+$69 = 2
+[Ok, so x is either 0 or 1]
+(gdb) p/x $bt[0].bt.bvptr
+$70 = 0xc0000000
+(gdb) p/x $bt[1].bt.bvptr
+$71 = 0xc0000000
+[Strange values, let's try 0]
+(gdb)  p ofe_v4filter_vec + $bt[0].bt.bvptr
+$72 = (ofe_v4filter_t *) 0x605543600
+(gdb)  p bv[4]
+$74 = (ofe_v4filter_t *) 0x205543600
+(gdb) 
+
+We don't get the same values but both values are equally strange so I don't think this 
+is  a single bit error. 
+I suspect something has trashed the filter table.
+
+
+
+------- Comment #4 From Magnus Larsson 2009-03-17 10:12 CET [reply][delete] ------- 
+Assignee removed: anderi@packetfront.com, added: mla@packetfront.com 
+ You are correct, me bad! I will continue to look at it
+
+------- Comment #5 From Younger Wang 2009-03-20 10:18 CET [reply][delete] -------
+A new core file with the same run status is uploaded.
+
+
+File:                /mnt/builder-bugs/ucmon/10.105.101.4_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49c35af0_2T-cell5P-1
+Type:                iBOS OFE core file
+Version data:        valid
+iBOS version:        (0x1898003c) 3.19.0-RC7
+Compile time:        (0x49c1827c) Thu Mar 19 00:23:40 2009
+Compile directory:   /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel
+Compiled by:         n/a
+iBOS root directory: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos
+Kernel symbol file:  /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/image.asr5k.rel/asr5k-rel.gdb
+ibosbin symbol file: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/destdir.asr5k.rel/ibosbin
+OFE symbol file:     /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel/ofe/ofe
+iBOS version string: ibos-asr5k-3.19.0-ED-RC7
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+------- Comment #6 From Jonas Jacobsson 2009-03-25 12:19 CET [reply][delete] -------
+A new core file with same run status. The ASR was acting as a member of a
+VLAN bridge vpn.
+
+Core file: bugs/17310/
+
+
+Ucmon reported
+--------------
+Host: core-p
+Address: 10.66.97.2
+Core file: /opt/packetfront/becs3/roots/sm/ibos-asr5k/core/10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1
+ASR: BTU3-2
+Timestamp: 49ca0f7a
+Unixtime: 1237979002
+Human readable time: 2009-03-25 12:03:22 CET
+
+*******************************************************************
+File:                /mnt/builder-bugs/ucmon/10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1
+Type:                iBOS OFE core file
+iBOS version string: ibos-asr5k-3.19.0-ED-RC7
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Failed to read MAC in core file, trying to dig out info:
+
+--- Result ---
+
+The core file did NOT match any existing bug.
+Open a new bug, create a directory /home/builder/bugs/<new-bug-id> and move the files 10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1 and 10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1.cscan there.
+Copy the output above into a comment of the new bug.
+
+*******************************************************************
+
+
+
+corescan file
+--------------
+builder@linker:~/bugs/17310$ cat 10.105.101.4_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49c35af0_2T-cell5P-1.cscan
+/usr/local/ibos-tools/bin/mipseb--netbsd-gdb -ex "target ibos 10.105.101.4_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49c35af0_2T-cell5P-1" -ex "source /home/builder/ibos_gdbscripts/.gdbinit"  -ex "set height 0" -batch -ex "coreinfo"
+
+Checking for iBOS core info.
+Looks like a bzip2 file.
+
+File:                /mnt/builder-bugs/ucmon/10.105.101.4_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49c35af0_2T-cell5P-1
+Type:                iBOS OFE core file
+Version data:        valid
+iBOS version:        (0x1898003c) 3.19.0-RC7
+Compile time:        (0x49c1827c) Thu Mar 19 00:23:40 2009
+Compile directory:   /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel
+Compiled by:         n/a
+iBOS root directory: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos
+Kernel symbol file:  /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/image.asr5k.rel/asr5k-rel.gdb
+ibosbin symbol file: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/destdir.asr5k.rel/ibosbin
+OFE symbol file:     /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel/ofe/ofe
+iBOS version string: ibos-asr5k-3.19.0-ED-RC7
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Loading symbolfile: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel/ofe/ofe
+Core #1: trap: external interrupt: cause = 0x40008800
+pc = 0x4010528, vaddr = 0x0
+Using core #1.
+Stack at va: 0x100000000 - 0x100002000 pa: 0x5648000 - 0x564a000
+iBOS OFE core info:
+
+#0  0x0000000000000000 in ?? ()
+#1  0x0000000004010528 in acl_get_head_locked (index=90454816)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/net/acl.c:51
+#2  0x00000000040105ec in acl_insert (index=90454816, k=0x58fed18)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/net/acl.c:80
+#3  0x0000000004011864 in ofecom_dispatch (hdr=0x58fed10)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/ofecom/ofecom.c:1090
+#4  0x0000000004012440 in ofecom_input_ibos (pow=0x5643b20)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/ofecom/ofecom.c:491
+#5  0x0000000004009f84 in fastpath ()
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/net/fastpath.c:1916
+#6  0x0000000004000e40 in init (mem=0x5be3800)
+    at /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/sys/dev/octeon/ofe/init.c:206
+#7  0x0000000000000000 in ?? ()
+
+1       /* $PacketFront: ibos3/sys/dev/octeon/ofe/init.c,v 1.15 2008/02/21 14:29:32 andoma Exp $ */
+2
+3       /*
+4        * (C) 2006 PacketFront Sweden AB. This Software and its content are
+5        * protected by the Swedish Copyright Act (Sw: Upphovsrttslagen) and,
+6        * if applicable, the Swedish Patents Act (Sw: Patentlagen). All and any
+7        * copying and distribution of the software and its content without
+8        * authorization by PacketFront Sweden AB is prohibited. The prohibition
+9        * includes every form of reproduction and distribution.
+10       *
+
+For more commands use: help user
+
+[coreinfo finished]
+
+------- Comment #7 From Jonas Jacobsson 2009-03-25 12:21 CET [reply][delete] -------
+Sorry, wrong corescan for the latest core. This should be the correct one:
+
+builder@linker:~/bugs/17310$ cat 10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1.cscan
+/usr/local/ibos-tools/bin/mipseb--netbsd-gdb -ex "target ibos 10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1" -ex "source /home/builder/ibos_gdbscripts/.gdbinit"  -ex "set height 0" -batch -ex "coreinfo"
+
+Checking for iBOS core info.
+Looks like a bzip2 file.
+
+File:                /mnt/builder-bugs/ucmon/10.103.101.9_ibos-asr5k-3.19.0-ED-RC7.ofe.core.49ca0f7a_2T-cell3P-1
+Type:                iBOS OFE core file
+Version data:        valid
+iBOS version:        (0x1898003c) 3.19.0-RC7
+Compile time:        (0x49c1827c) Thu Mar 19 00:23:40 2009
+Compile directory:   /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel
+Compiled by:         n/a
+iBOS root directory: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos
+Kernel symbol file:  /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/image.asr5k.rel/asr5k-rel.gdb
+ibosbin symbol file: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/destdir.asr5k.rel/ibosbin
+OFE symbol file:     /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel/ofe/ofe
+iBOS version string: ibos-asr5k-3.19.0-ED-RC7
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Loading symbolfile: /home/builder/tagbuild/tag_compile_ibos/ibos-3.19.0-ED-RC7/ibos/objdir/sys.asr5k.rel/ofe/ofe
+Core #1: trap: external interrupt: cause = 0x40008000
+pc = 0x682e062851dd23b, vaddr = 0x0
+Using core #1.
+Stack at va: 0x100000000 - 0x100002000 pa: 0x5648000 - 0x564a000
+iBOS OFE core info:
+
+#0  0x0000000000000000 in ?? ()
+#1  0x0682e062851dd23b in ?? ()
+warning: GDB can't find the start of the function at 0x682e062851dd23b.
+
+    GDB is unable to find the start of the function at 0x682e062851dd23b
+and thus can't determine the size of that function's stack frame.
+This means that GDB may be unable to access that stack frame, or
+the frames below it.
+    This problem is most likely caused by an invalid program counter or
+stack pointer.
+    However, if you think GDB should simply search farther back
+from 0x682e062851dd23b for code which looks like the beginning of a
+function, you can increase the range of the search using the `set
+heuristic-fence-post' command.
+Previous frame identical to this frame (corrupt stack?)
+
+1       /* $PacketFront: ibos3/sys/dev/octeon/ofe/init.c,v 1.15 2008/02/21 14:29:32 andoma Exp $ */
+2
+3       /*
+4        * (C) 2006 PacketFront Sweden AB. This Software and its content are
+5        * protected by the Swedish Copyright Act (Sw: Upphovsrttslagen) and,
+6        * if applicable, the Swedish Patents Act (Sw: Patentlagen). All and any
+7        * copying and distribution of the software and its content without
+8        * authorization by PacketFront Sweden AB is prohibited. The prohibition
+9        * includes every form of reproduction and distribution.
+10       *
+
+For more commands use: help user
+
+[coreinfo finished]
+builder@linker:~/bugs/17310$
+
+------- Comment #8 From Jonas Jacobsson 2009-03-25 12:23 CET [reply][delete] -------
+Config:
+
+BTU3-2# show run
+! version ibos-asr5k-3.19.0-ED-RC7 (ibos-asr5k-3.19.0-ED-RC7.bz2)
+interface loopback0
+ ip address 10.103.100.1 255.255.255.255
+ ip pim sparse-mode passive
+ sdr subscribe 162525 ifcounters interval 900
+ no shutdown
+
+interface loopback1
+ ip address 10.103.99.0 255.255.255.255
+ ip pim sparse-mode passive
+ sdr subscribe 166298 ifcounters interval 900
+ no shutdown
+
+interface tunnel1
+ tunnel mode l2tpv3
+ port egress-rate 102400
+ vlan member 51-53
+ l2tpv3 10.101.100.8 166306
+ sdr subscribe 166307 ifcounters interval 900
+ no shutdown
+
+interface tunnel2
+ tunnel mode l2tpv3
+ port egress-rate 102400
+ vlan member 51-53
+ l2tpv3 10.101.100.9 166322
+ sdr subscribe 166323 ifcounters interval 900
+ no shutdown
+
+interface tunnel3
+ tunnel mode l2tpv3
+ port egress-rate 102400
+ vlan member 51-53
+ l2tpv3 10.102.100.8 172207
+ sdr subscribe 172208 ifcounters interval 900
+ no shutdown
+
+interface tunnel4
+ tunnel mode l2tpv3
+ port egress-rate 102400
+ vlan member 51-53
+ l2tpv3 10.102.100.9 172215
+ sdr subscribe 172216 ifcounters interval 900
+ no shutdown
+
+interface vlan501
+ no shutdown
+
+interface vlan502
+ no shutdown
+
+interface vlan503
+ no shutdown
+
+interface vlan504
+ no shutdown
+
+interface vlan505
+ no shutdown
+
+interface vlan511
+ no shutdown
+
+interface vlan512
+ no shutdown
+
+interface fastethernet1
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162501 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet2
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162502 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet3
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162503 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet4
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162504 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet5
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162505 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet6
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162506 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet7
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162507 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet8
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162508 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet9
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162509 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet10
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162510 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet11
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162511 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet12
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162512 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet13
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162513 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet14
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162514 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet15
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162515 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet16
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162516 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet17
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162517 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet18
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162518 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet19
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162519 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet20
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162520 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet21
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162521 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet22
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162522 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet23
+ description Customer interface
+ ip access-group cust-in in
+ ip strict-clients
+ arp proxy
+ ip dhcp csar
+ ip igmp access-group igmp-in
+ ip igmp downstream-map
+ pfdp passive
+ pfdp enable
+ sdr subscribe 162523 ifcounters interval 900
+ no snmp trap link-status-change
+ no shutdown
+
+interface fastethernet24
+ vlan member 51-53
+ sdr subscribe 162524 ifcounters interval 900
+ no shutdown
+
+interface gigabitethernet1
+ no shutdown
+ port uplink
+
+interface gigabitethernet2
+ description Uplink interface
+ ip address 10.103.101.9 255.255.255.252
+ pfdp enable
+ ip pim sparse-mode
+ sdr subscribe 162529 ifcounters interval 900
+ no shutdown
+ port uplink
+
+interface downstream0
+ ip pim sparse-mode passive
+ no shutdown
+
+router ospf
+ router-id 10.103.100.1
+ redistribute kernel metric 10 route-map ospf_redist_kernel
+ redistribute connected metric 10 route-map ospf_redist_connected
+ redistribute static metric 10 route-map ospf_redist_static
+ area 10.103.0.0 nssa
+ network 10.103.99.0/32 area 10.103.0.0
+ network 10.103.100.1/32 area 10.103.0.0
+ network 10.103.101.8/30 area 10.103.0.0
+
+snmp-group version 2c
+ community public read-write view all
+ community pf read-write view all
+
+hostname BTU3-2
+
+csar server 10.66.97.30
+csar server 10.66.97.26
+
+l2tpv3 10.101.100.8 source-interface loopback1
+l2tpv3 10.101.100.9 source-interface loopback1
+l2tpv3 10.102.100.8 source-interface loopback1
+l2tpv3 10.102.100.9 source-interface loopback1
+
+license rpm rpm
+
+logging console errors
+logging monitor debugging
+logging buffered debugging
+logging trap debugging
+logging facility local7
+logging accounting facility local7
+logging accounting server becs
+logging server becs
+
+!ip route 0.0.0.0/0 10.103.101.10 254
+
+ntp server 192.168.1.247
+ntp source-interface loopback0
+ntp version 2
+
+rpm multicast mpeg rtp access-group rpm_rtp_acl
+rpm multicast mpeg udp access-group rpm_udp_acl
+
+snmp agent inform retries 20
+snmp agent inform timeout 5
+snmp view all include .1
+
+username t password yEY3/hcTnSJFo encrypted
+enable secret iMWPLKaSrVpEc encrypted
+
+access-list cust-in
+ seq 10 permit udp any 68 any 67 shortcut
+ seq 20 permit udp any 67 any 67 shortcut
+ seq 30 permit ip any any
+
+access-list internet-no1918
+ seq 5 permit udp any 68 any 67
+ seq 15 permit ip host 192.168.1.237
+ seq 20 deny ip any 172.16.0.0/12
+ seq 30 deny ip any 192.168.0.0/16
+ seq 40 deny tcp any any 135
+ seq 50 deny udp any any 135
+ seq 60 deny tcp any any range 137 139
+ seq 70 deny udp any any range 137 139
+ seq 80 deny tcp any any 445
+ seq 90 deny udp any any 445
+ seq 100 deny ip any protocol 2
+ seq 110 permit ip any any
+
+access-list multicast_all
+ seq 10 permit ip 224.0.0.0/4
+
+access-list portal-access
+ seq 10 permit tcp any host 10.121.252.2 80
+ seq 20 permit tcp any host 10.121.252.14
+ seq 30 permit tcp any host 10.121.252.46
+ seq 40 permit tcp any host 10.121.252.78
+ seq 50 permit icmp any host 10.121.252.2
+ seq 60 permit icmp any host 10.121.252.14
+ seq 70 permit icmp any host 10.121.252.46
+ seq 80 permit icmp any host 10.121.252.78
+ seq 90 permit udp any any 67
+ seq 100 deny ip any any
+
+access-list rpm_rtp_acl
+ seq 10 permit ip 10.121.0.0/16 239.99.0.0/16
+
+access-list rpm_udp_acl
+ seq 10 permit ip 10.121.254.0/24 239.99.0.0/16
+
+route-map ospf_redist_connected 10 permit
+ match ip address ospf_redist_connected_acl
+
+route-map ospf_redist_connected 20 permit
+ match client
+
+route-map ospf_redist_kernel 10 permit
+ match client
+
+route-map ospf_redist_static 10 permit
+ match ip address ospf_redist_static_acl
+
+route-map ospf_redist_static 20 permit
+ match client
+!end
+BTU3-2#
+
+------- Comment #9 From Magnus Larsson 2009-03-25 13:32 CET [reply][delete] -------
+Could you plz upgrade to RC8? This is watchdog reset in the OFE.. and the RC8
+have some fixes in this area.. 
+
+------- Comment #10 From Jonas Jacobsson 2009-03-27 13:21 CET [reply][delete] -------
+Reproduced on RC8...
+
+
+Core file and core scan in bugdir.
+
+
+Host: core-p
+Address: 10.66.97.2
+Core file: 10.101.101.10_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49ccc2a0_2T-cell1P-1
+ASR: BTU1-3
+Timestamp: 49ccc2a0
+Unixtime: 1238155936
+Human readable time: 2009-03-27 13:12:16 CET
+
+*******************************************************************
+File:                10.101.101.10_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49ccc2a0_2T-cell1P-1
+Type:                iBOS OFE core file
+iBOS version string: ibos-asr5k-3.19.0-ED-RC8
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Failed to read MAC in core file, trying to dig out info:
+
+--- Result ---
+
+The core file did NOT match any existing bug.
+Open a new bug, create a directory /home/builder/bugs/<new-bug-id> and move the files 10.101.101.10_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49ccc2a0_2T-cell1P-1 and 10.101.101.10_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49ccc2a0_2T-cell1P-1.cscan there.
+Copy the output above into a comment of the new bug.
+
+*******************************************************************
+
+------- Comment #11 From Jonas Jacobsson 2009-03-31 08:18 CET [reply][delete] -------
+Another core file this night...
+
+core file and core scan in bugdir.
+10.102.101.22_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49d14322_2T-cell2P-5
+
+
+
+
+Host: core-p
+Address: 10.66.97.2
+Core file: /opt/packetfront/becs3/roots/sm/ibos-asr5k/core/10.102.101.22_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49d14322_2T-cell2P-5
+ASR: BTU2-10
+Timestamp: 49d14322
+Unixtime: 1238450978
+Human readable time: 2009-03-31 00:09:38 CEST
+
+*******************************************************************
+File:                /mnt/builder-bugs/ucmon/10.102.101.22_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49d14322_2T-cell2P-5
+Type:                iBOS OFE core file
+iBOS version string: ibos-asr5k-3.19.0-ED-RC8
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Failed to read MAC in core file, trying to dig out info:
+
+--- Result ---
+
+The core file did NOT match any existing bug.
+Open a new bug, create a directory /home/builder/bugs/<new-bug-id> and move the files 10.102.101.22_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49d14322_2T-cell2P-5 and 10.102.101.22_ibos-asr5k-3.19.0-ED-RC8.ofe.core.49d14322_2T-cell2P-5.cscan there.
+Copy the output above into a comment of the new bug.
+
+*******************************************************************
+
+------- Comment #12 From Magnus Larsson 2009-03-31 12:36 CET [reply][delete] ------- 
+SW time removed: 0.00, added: 4.00 
+ 4 hours for more investigation.. but I think I know why it happens.. 
+
+------- Comment #13 From Magnus Larsson 2009-04-03 10:16 CET [reply][delete] -------
+sh.ibos-3.9-10@ibos
+Bump rtver _after_ we do the update of everything and sync, and rtver as late as possible
+
+This most likely fixes a myriad of raceconditions seen in
+number of cores..
+
+Example of bugs it potentially fixes.. #17127, #17310--
+http://git.int.packetfront.com/?p=ibos;a=commitdiff;h=31d3fcd368
+git fetch && git show 31d3fcd368ca48044863c56aa4a67363587de469
+
+------- Comment #14 From Magnus Larsson 2009-04-06 16:45 CET [reply][delete] -------
+master@ibos
+Bump rtver _after_ we do the update of everything and sync, and upate rtver as late as possible
+
+This most likely fixes a myriad of raceconditions seen in
+number of cores..
+
+Example of bugs it potentially fixes.. #17127, #17310--
+http://git.int.packetfront.com/?p=ibos;a=commitdiff;h=95de36a635
+git fetch && git show 95de36a6353aa14d5192872c11fd4856ff9cfa33
+
+------- Comment #15 From Magnus Larsson 2009-04-07 16:42 CET [reply][delete] -------
+sh.ibos-3.15-16@ibos
+Bump rtver _after_ we do the update of everything and sync, and rtver as late as possible
+
+This most likely fixes a myriad of raceconditions seen in
+number of cores..
+
+Example of bugs it potentially fixes.. #17127, #17310
+(cherry-picked from 31d3fcd368ca48044863c56aa4a67363587de469)--
+http://git.int.packetfront.com/?p=ibos;a=commitdiff;h=f0f568ef47
+git fetch && git show f0f568ef479807d75bf21fa49b72618c53045b0e
+
+------- Comment #16 From Magnus Larsson 2009-04-29 11:38 CET [reply][delete] -------
+ki.rainbow@ibos
+Bump rtver _after_ we do the update of everything and sync, and upate rtver as late as possible
+
+This most likely fixes a myriad of raceconditions seen in
+number of cores..
+
+Example of bugs it potentially fixes.. #17127, #17310--
+http://git.int.packetfront.com/?p=ibos;a=commitdiff;h=95de36a635
+git fetch && git show 95de36a6353aa14d5192872c11fd4856ff9cfa33
+
+------- Comment #17 From Magnus Larsson 2009-05-06 06:26 CET [reply][delete] ------- 
+Status removed: NEW, added: RESOLVED 
+Keywords added: noreleasenote 
+Resolution added: FIXED 
+ Setting this to fixed since we havent seen it since
+
+------- Comment #18 From Jonas Jacobsson 2009-05-07 08:20 CET [reply][delete] ------- 
+Status removed: RESOLVED, added: REOPENED 
+Resolution removed: FIXED 
+ Reproduced on 3.16.4-LD-RC9. Reopening bug.
+
+Core- and scanfile in bugdir.
+
+
+Host: core-p
+Address: 10.66.97.2
+Core file: /opt/packetfront/becs3/roots/sm/ibos-asr5k/core/10.103.101.2_ibos-asr5k-3.16.4-LD-RC9.ofe.core.4a01f3fe_2T-cell3P-1
+ASR: BTU3-1
+Timestamp: 4a01f3fe
+Unixtime: 1241641982
+Human readable time: 2009-05-06 22:33:02 CEST
+
+*******************************************************************
+File:                /mnt/builder-bugs/ucmon/10.103.101.2_ibos-asr5k-3.16.4-LD-RC9.ofe.core.4a01f3fe_2T-cell3P-1
+Type:                iBOS OFE core file
+iBOS version string: ibos-asr5k-3.16.4-LD-RC9
+iBOS platform:       n/a
+Run status:          BOOT_STATUS_OFE_ERR
+
+Failed to read MAC in core file, trying to dig out info:
+      1 ibos-asr5k-3.16.4-LD-RC9
+
+--- Result ---
+
+The core file did NOT match any existing bug.
+Open a new bug, create a directory /home/builder/bugs/<new-bug-id> and move the files 10.103.101.2_ibos-asr5k-3.16.4-LD-RC9.ofe.core.4a01f3fe_2T-cell3P-1 and 10.103.101.2_ibos-asr5k-3.16.4-LD-RC9.ofe.core.4a01f3fe_2T-cell3P-1.cscan there.
+Copy the output above into a comment of the new bug.
+
+*******************************************************************
+------- Changes made by Jonas Jacobsson 2009.05.07 08:20:27 ------- 
+Depends on added: 17771 
+Depends on added: 17772 
+
+------- Comment #19 From Magnus Larsson 2009-05-07 09:00 CET [reply][delete] -------
+This is not the same bug, could you please file a new one... This appears to 
+be some kind of the timeout in the OFE.
+
+------- Comment #20 From Magnus Larsson 2009-05-07 09:02 CET [reply][delete] ------- 
+Status removed: REOPENED, added: RESOLVED 
+Resolution added: WORKSFORME 
+ funny thing is.. I think this bug is actually related with 17217.. which 
+was fixed as of yesterday
+
+------- Comment #21 From Tomas Skäre 2009-06-22 18:18 CET [reply][delete] -------
+This bug is set as worksforme, but the child bugs are set as fixed. 
+What's the correct resolution?
+------- Changes made by Tomas Skäre 2009.06.23 12:44:47 ------- 
+Status removed: RESOLVED, added: REOPENED 
+Resolution removed: WORKSFORME 
+
+------- Changes made by Tomas Skäre 2009.06.23 12:44:56 ------- 
+Status removed: REOPENED, added: RESOLVED 
+Resolution added: FIXED 
+
+------- Changes made by Anders Eriksson 2009.08.18 16:25:44 ------- 
+Depends on added: 18468 
+
+------- Comment #22 From Mats Mejbert 2010-03-09 17:07 CET [reply][delete] ------- 
+Status removed: RESOLVED, added: VERIFIED 
+ Verified by maturing, no activity on this one for several months.
+Bug List: (86 of 200) First Last Prev Next   Show last search results      Search page      Enter new bug 
+Actions:	Home | New | Search | bug # 
+  Find | Reports | My Requests | Log out ramyag
+Edit:	Prefs
+Saved Searches:	My Bugs

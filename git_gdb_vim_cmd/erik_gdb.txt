@@ -1,0 +1,45 @@
+
+(ibos-gdb) l *$ra
+0xffffffff80286174 is in sppp_ipcp_tlu (/home/builder/tagbuild/tag_compile_ibos/ibos-7.0.1-ED-RC27/ibos/sys/netibos/ibos_if_spppsubr.c:3613).
+3608
+3609
+3610 static void
+3611 sppp_remoteip_avl_insert(struct sppp *sp, struct pppoe_softc *sc)
+3612 {
+3613 AVL_INSERT(&(sp->iflsc->session_tree_by_rip), sc, avltree_by_remote_ip);
+3614 }
+3615
+3616 static void
+3617 sppp_ipcp_tlu(struct sppp *sp)
+(ibos-gdb)
+ramyag@waystream.com (Jabber) Jul 11, 2017 18:40:32
+Is this for 'WARNING pseudorandom rekeying'
+Erik Anggard Jul 11, 2017 18:42:06
+yes, the first core file
+ramyag@waystream.com (Jabber) Jul 11, 2017 18:42:45
+Ravi is saying this issue already fixed
+This issue came in RC-27
+Erik Anggard Jul 11, 2017 18:43:27
+ok, then we know what it is
+ramyag@waystream.com (Jabber) Jul 11, 2017 20:19:48
+Hi Erik
+OPlease check the below core file
+http://sh-coredb.int.waystream.com/coredb/default/corefile_show/113295
+I think you have fixed this issue
+ramyag@waystream.com (Jabber) Jul 11, 2017 20:24:32
+Is this issue fixed with below gerrit patch
+http://gerrit.int.waystream.com/#/c/6914/
+Erik Anggard Jul 11, 2017 20:28:37
+no, I don't think it is the same
+for that crash we got an assert
+ramyag@waystream.com (Jabber) Jul 11, 2017 20:29:08
+ok, i will raise new bug
+Erik Anggard Jul 11, 2017 20:29:38
+it could be that some one just did "kill signal 6 <pid>"
+since process core is just an abort during a system call
+ramyag@waystream.com (Jabber) Jul 11, 2017 20:30:38
+ah it is abort
+Erik Anggard Jul 11, 2017 20:31:34
+(ibos-gdb) p t->cmd_line
+$1 = 0x78605800 "show running-config | grep policy | wc"
+(ibos-gdb)

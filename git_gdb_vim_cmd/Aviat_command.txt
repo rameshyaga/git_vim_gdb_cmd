@@ -1,0 +1,1468 @@
+Spirent/Ixia Ports Reservation:
+-------------------------------
+
+http://172.30.18.87/atrs
+
+http://172.30.18.90/bugzilla/ 
+
+
+GIT Repository Set-up
+-----------------------
+git config --global user.name "ramesh yag"
+
+git config --global user.email "ramesh.yaga@aricent.com"
+
+git clone git://172.30.18.83/git/aricent/sw/main.git ~/csr
+
+cd csr/
+
+git submodule update --init --recursive
+
+git branch -a
+
+git checkout CSR1000Aricent_REL4.0_Merge_2414
+
+git submodule update --init --recursive
+
+git branch -a
+
+cd iss/
+
+git branch -a
+
+git checkout CSR1000Aricent_REL4.0_Merge_2414
+
+git branch -a
+
+same to wddi,wdd,mibs folder
+
+In csr folder
+-------------------
+./sync-3rdparty
+
+mae all swpac
+
+----------sw update to latest code-------------------
+~/csr/iss$ git status
+
+:~/csr/iss$ git pull
+
+:~/csr/iss$ mae
+
+~/csr$ git status
+
+~/csr$ git submodule update --init --recursive
+
+~/csr$ git status
+
+
+cd iss
+git status
+git pull
+cd wdd
+git pull
+cd wddi/
+git pull
+mae IWI_TARGET=CSR1000V3
+cd LR
+mae clean -C ../npapi/wintegra/
+cd iss
+mae
+
+---------------------------------------------
+copying image
+-------------
+screen -x
+ctrl a and ctrl d to come bac to linux prompt
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp ramesh@195.168.1.85:/home/ramesh/csr3.2/iss/code/future/LR/ISS.exe /bin
+reboot
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp mcneill@195.168.1.86:/home/mcneill/CSR1000Aricent_MTNSA_R3.1/iss/code/future/LR/ISS.exe /bin
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp root@195.168.1.86:/home/fatima/CSR1000Aricent_REL4.0_Merge_2414/iss/code/future/LR/ISS.exe /bin
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp root@195.168.1.85:/home/eerthana/code_eerthi/iss/code/future/LR/ISS.exe /bin
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp ramesh@195.168.1.85:/home/ganesh/R3.1/iss/code/future/LR/ISS.exe /bin
+
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp root@195.168.1.29:/bin/ISS.exe /bin
+
+
+cd /bin/
+mount -o remount wr /
+rm -f ISS.exe
+illall -9 ISS.exe
+scp ramesh@195.168.1.85:/home/deepu/CSR1000Aricent_MTNSA_R3.1/iss/code/future/LR/ISS.exe /bin
+
+
+remove config file
+------------------------
+c t
+confi
+config del
+config delete ao
+config delete aos.conf
+
+detached]
+
+cd /mnt/
+active/inactive/sd/
+cd /mnt/sd/config30/
+ls
+aos.conf
+mount -o remount wr /
+rm aos.conf
+
+
+
+Installing the SW pac in AoS Boards
+-------------------------------------
+
+hari@mpc6-86:~/lnx-tun-dis/BUILD.CSR1000V3$ ls -lrt ctr8540-master.21.2815-@mpc6-86.1.swpac
+-rw-rw-r-- 1 hari hari 66060209 Apr 6 06:50 ctr8540-master.21.2815-@mpc6-86.1.swpac
+
+172.30.18.85
+*86
+
+Then scp <XXX.swpac> from 84pc to Board-IP <192.168.1.X>:/tmp/<xxx1616.swpac><login-credentials: username: root & pwd: admin123>
+2. Log-in to the board, using the telnet’s of Board-X.
+3. The in the board from AOS prompt, give the following commands,
+a. c t
+swload
+laod-uri file:///tmp/<XXX.swpac>
+load
+e. do
+{
+show swload;
+} while (Load-progress!= 100 && Current-Status != “Load-O”);
+Note: Chec with the above command for the Load progress & Current Status, till they have values 100 & “Load O”
+f. if (Current-Status == “Load-O”)
+{
+activate;
+}
+Note7: The above command will activate the S/w & Reboot’s the Board.
+show Activate Error, then try rebooting it & chec what was changed in Active Version, If it has not changed (I am taling with reference to the SW version which was present before SW load> then try loading the SW with the above procedure again :P
+4. Once the board is Rebooted login-to the Board & chec for the license using the following command.
+show swload
+show license
+show the installed software & license.
+
+
+----------------------------------------------------------------------------------------
+helpdes mode password : aviat123
+show winpath pce-filter statistics in gi 0/1
+
+show mpls 
+
+----------------------------------------------------------------------------------------------
+vim npapi/wintegra/nputils.h--------- >NPAPI_MPLS = 24, {0xFFFFFFFF, MODULE_TRC_ENABLE}/*Array 24 */,
+
+Sending for Review
+-----------------------
+
+git status
+tar -cvzf modified_files.tgz code/future/npapi/wintegra/vlnmpbnp.c code/future/npapi/wintegra/npl2vpn.c
+git checkout code/future/npapi/wintegra/
+git status
+
+tar -cvzf original_files.tgz code/future/npapi/wintegra/vlnmpbnp.c code/future/npapi/wintegra/npl2vpn.c
+
+patch -p0 -i AS-1348.diff
+
+
+---------------------------------------To update the Latest code------------------------------------------
+ramesh@labuser-OptiPlex-3010:~$ git status
+fatal: Not a git repository (or any parent up to mount parent )
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+ramesh@labuser-OptiPlex-3010:~$
+ramesh@labuser-OptiPlex-3010:~$
+ramesh@labuser-OptiPlex-3010:~$ cd csr/
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in woring directory)
+(commit or discard the untraced or modified content in submodules)
+
+modified: iss (modified content, untraced content)
+
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+embedded/app/dcli/whippedMap.js
+ui/web/client.js.map
+ui/web/client.libs.js
+ui/web/npm-debug.log
+no changes added to commit (use "git add" and/or "git commit -a")
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ cd iss/
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git status
+Not currently on any branch.
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in woring directory)
+
+modified: code/future/npapi/wintegra/npl2vpn.c
+modified: code/future/npapi/wintegra/nputils.h
+modified: code/future/npapi/wintegra/vlnmpbnp.c
+
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+AS-1348.diff
+AS-1348_1.diff
+AS-1348_V02.diff
+code/future/cfa2/src/cscope.out
+code/future/cscope.out
+code/future/npapi/wintegra/npl2vpn.c.rej
+code/future/tags
+modified_files.tgz
+original_files.tgz
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git status
+Not currently on any branch.
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in woring directory)
+
+modified: code/future/npapi/wintegra/npl2vpn.c
+modified: code/future/npapi/wintegra/nputils.h
+modified: code/future/npapi/wintegra/vlnmpbnp.c
+
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+AS-1348.diff
+AS-1348_1.diff
+AS-1348_V02.diff
+code/future/cfa2/src/cscope.out
+code/future/cscope.out
+code/future/npapi/wintegra/npl2vpn.c.rej
+code/future/tags
+modified_files.tgz
+original_files.tgz
+no changes added to commit (use "git add" and/or "git commit -a")
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git branch -a
+* (no branch)
+CSR1000Aricent_REL4.0_Merge_2414
+master
+remotes/origin/CSR1000Aricent_REL2.2
+remotes/origin/CSR1000Aricent_REL2.4
+remotes/origin/CSR1000Aricent_REL3.0
+remotes/origin/CSR1000Aricent_REL3.1
+remotes/origin/CSR1000Aricent_REL3.1_Merge_1954
+remotes/origin/CSR1000Aricent_REL4.0_Merge_2414
+remotes/origin/HEAD -> origin/master
+remotes/origin/master
+remotes/origin/test_iss_branch
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git checkout -- .
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git status
+Not currently on any branch.
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+AS-1348.diff
+AS-1348_1.diff
+AS-1348_V02.diff
+code/future/cfa2/src/cscope.out
+code/future/cscope.out
+code/future/npapi/wintegra/npl2vpn.c.rej
+code/future/tags
+modified_files.tgz
+original_files.tgz
+nothing added to commit but untraced files present (use "git add" to trac)
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git checkout CSR1000Aricent_REL4.0_Merge_2414
+Previous HEAD position was 9e0a149... ISS-1909: Fix for VPLS: Deconfiguration of L2 vfi with 'no neighbor...' command produces invalid error
+Switched to branch 'CSR1000Aricent_REL4.0_Merge_2414'
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+AS-1348.diff
+AS-1348_1.diff
+AS-1348_V02.diff
+code/future/cfa2/src/cscope.out
+code/future/cscope.out
+code/future/npapi/wintegra/npl2vpn.c.rej
+code/future/tags
+modified_files.tgz
+original_files.tgz
+nothing added to commit but untraced files present (use "git add" to trac)
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git log
+commit 0c553a294651d0508cb7fbed385a06e795d0ce80
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Tue Apr 7 16:09:29 2015 +0530
+
+CSR-12626:VPLS: LSR Node getting hanged while trying to change mtu to 10214 after OSPF & PW Status is UP
+
+commit 28a3fff3891dc4819dc7fff0a9ead4cfd813d09b
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Tue Apr 7 16:05:39 2015 +0530
+
+CSR-12496 - VPLS: Getting PW Failed in HW with VC Status as Down while adding 17th Vlan based AC
+
+commit 4f76c73a643c46a6e6f737a777d53c391e170088
+Author: Hari Palanimuthu <hari.palanimuthu@aricent.com>
+Date: Mon Apr 6 17:52:10 2015 +0530
+
+ISS-1917 fixed issue for MPLS: Set up a stub area will cause ISS frozen
+
+commit 499b1fb1b25065fa7755a27580d460c78a5e7a84
+Author: Mc Neill Ivan Suresh <mcneill.suresh@aricent.com>
+Date: Fri Apr 3 17:12:03 2015 +0530
+
+ISS-1903: ERPS: When CCM offloading is enabled the MAC learning event is triggered continuously for each CCM on the RPL o
+
+commit 6ee278ac50109054a0574ab2ca4bc8d1ad3fb13b
+Author: Mc Neill Ivan Suresh <mcneill.suresh@aricent.com>
+Date: Fri Apr 3 00:07:08 2015 +0530
+
+ISS-1903: ERPS: When CCM offloading is enabled the MAC learning event is triggered continuously for each CCM on the RPL o
+
+commit 9e0a14931d827ed8c3aeb3299f6f05abfa7a8dee
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Tue Mar 31 14:30:02 2015 +0530
+
+ISS-1909: Fix for VPLS: Deconfiguration of L2 vfi with 'no neighbor...' command produces invalid error
+
+commit a16df9ebb2ea479e47bb100aa76e6557d2e5e540
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Mon Mar 30 18:26:43 2015 +0530
+
+CSR-12577:MPLS: VPLS- Support for Qualified Learning
+
+commit 0546b23f4991611392d6ff44de2ebc2762b3c4ad
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git pull
+remote: Counting objects: 1054, done.
+remote: Compressing objects: 100% (190/190), done.
+remote: Total 670 (delta 495), reused 630 (delta 464)
+Receiving objects: 100% (670/670), 83.11 iB, done.
+Resolving deltas: 100% (495/495), completed with 188 local objects.
+From git://172.30.18.83/git/aricent/sw/iss
+
+ code/future/snmpv3/snmpmain.c| 22 +-
+ code/future/snmpv3/snmpmbdb.c| 29 +-
+ code/future/snmpv3/snmptrap.c|9 +-
+ code/future/snooping/snpcore/src/snpproc.c |2 -
+ code/future/sntp/src/sntpcli.c |5 +-
+ code/future/tcp/tcptrap.c| 42 +-
+ code/future/webnm/http.h | 46 +-
+ code/future/webnm/webnm.c| 47 +-
+ 99 files changed, 2891 insertions(+), 2711 deletions(-)
+ create mode 100644 code/future/ISS/common/msr/ValueConversion.txt
+ mode change 100644 => 100755 code/future/LR/iss/aviat/script/src/syslog/syslog.css
+ mode change 100644 => 100755 code/future/LR/iss/aviat/script/src/syslog/syslog.widgets.js
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ git log
+commit 09f2a9f7cb1a96cc233181f9df70917e69894724
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Fri Apr 10 16:38:04 2015 +0530
+
+ISS-1958: Fix for MPLS-TP : Observing failed in HW Error while crossconnecting the pseudowire in multisegment mode
+
+commit 2b1941de5efeb597fc1297b69be57b13b748a11e
+Author: Mc Neill Ivan Suresh <mcneill.suresh@aricent.com>
+Date: Fri Apr 10 14:09:14 2015 +0530
+
+ISS-1942 fixed issue for PB : In particular sequence Mac learning is not happening after 'mac-address-table flush' cmd
+
+commit e6229426514e042e43a201f33ee3de7905f01642
+Author: Mc Neill Ivan Suresh <mcneill.suresh@aricent.com>
+Date: Fri Apr 10 14:02:57 2015 +0530
+
+ISS-1946 fixed issue for MPLS-QoS : Traffic getting dropped while configuring metering CLIs on CEP/CNP as VLAN+Port based
+
+commit b0eeeb39a2a05747b592098f8b1b5f89a57a61c3
+Merge: 0c553a2 9b1431f
+Author: Mc Neill Ivan Suresh <mcneill.suresh@aricent.com>
+Date: Tue Apr 7 18:49:50 2015 +0530
+
+Merge tag 'CSR1000Release.2857' into CSR1000Aricent_REL4.0_Merge_2414
+
+commit 0c553a294651d0508cb7fbed385a06e795d0ce80
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Tue Apr 7 16:09:29 2015 +0530
+
+CSR-12626:VPLS: LSR Node getting hanged while trying to change mtu to 10214 after OSPF & PW Status is UP
+
+commit 28a3fff3891dc4819dc7fff0a9ead4cfd813d09b
+Author: Fatima Yasmin <fatima.rm@aricent.com>
+Date: Tue Apr 7 16:05:39 2015 +0530
+
+CSR-12496 - VPLS: Getting PW Failed in HW with VC Status as Down while adding 17th Vlan based AC
+
+commit 9b1431fd6a2bec24d2b3f04a1e67380e49505a87
+Author: Jonathan Halse <Jonathan.Halse@aviatnet.com>
+Date: Tue Apr 7 16:50:11 2015 +1200
+
+CSR-11829: Updated and enabled QoS and VLAN.
+
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$
+ramesh@labuser-OptiPlex-3010:~/csr/iss$ cd ..
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in woring directory)
+(commit or discard the untraced or modified content in submodules)
+
+modified: iss (new commits, untraced content)
+
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+embedded/app/dcli/whippedMap.js
+ui/web/client.js.map
+ui/web/client.libs.js
+ui/web/npm-debug.log
+no changes added to commit (use "git add" and/or "git commit -a")
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ git pull
+remote: Counting objects: 423, done.
+remote: Compressing objects: 100% (158/158), done.
+remote: Total 335 (delta 183), reused 314 (delta 171)
+Receiving objects: 100% (335/335), 277.87 iB, done.
+Resolving deltas: 100% (183/183), completed with 54 local objects.
+
+ * new tag] CSR1000Release.2821 -> CSR1000Release.2821
+ * new tag] CSR1000Release.2822 -> CSR1000Release.2822
+ * new tag] CSR1000Release.2823 -> CSR1000Release.2823
+ * new tag] CSR1000Release.2824 -> CSR1000Release.2824
+ * new tag] CSR1000Release.2825 -> CSR1000Release.2825
+ * new tag] CSR1000Release.2826 -> CSR1000Release.2826
+ * new tag] CSR1000Release.2827 -> CSR1000Release.2827
+ * n
+ mode change 100644 => 100755
+ create mode 100755 ui/web/src/plugins/moment/moment.server.js
+ mode change 100755 => 100644 ui/web/src/plugins/tables/tables.client.js
+ mode change 100755 => 100644 ui/web/src/plugins/tables/tables.shared.js
+ mode change 100755 => 100644 ui/web/src/plugins/tables/tables.validators.js
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ git submodule update --init --recursive
+Submodule 'binaries' () registered for path 'binaries'
+Submodule 'buildroot' () registered for path 'buildroot'
+Submodule 'common' () registered for path 'common'
+Submodule 'iss' () registered for path 'iss'
+Submodule 'linux' () registered for path 'linux'
+Submodule 'mibs' () registered for path 'mibs'
+Submodule 'wddi' () registered for path 'wddi'
+Submodule 'wdd' () registered for path 'wdd'
+Submodule 'winmon' () registered for path 'winmon'
+Submodule path 'common': checed out 'a459675805473d62e3a8836f10c097f9007ed4e8'
+Submodule path 'linux': checed out '39f902a4abcfee0ecf2de7519d46cdde4355976b'
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in woring directory)
+(commit or discard the untraced or modified content in submodules)
+
+modified: iss (untraced content)
+
+Untraced files:
+(use "git add <file>..." to include in what will be committed)
+
+embedded/app/dcli/whippedMap.js
+ui/web/client.js.map
+ui/web/client.libs.js
+ui/web/npm-debug.log
+no changes added to commit (use "git add" and/or "git commit -a")
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$
+ramesh@labuser-OptiPlex-3010:~/csr$ cd wddi/
+ramesh@labuser-OptiPlex-3010:~/csr/wddi$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+nothing to commit (woring directory clean)
+ramesh@labuser-OptiPlex-3010:~/csr/wddi$ git pull
+From git://172.30.18.83/git/aricent/sw/wddi
+ * new tag] CSR1000Aricent.502 -> CSR1000Aricent.502
+ * new tag] CSR1000Aricent.503 -> CSR1000Aricent.503
+ * new tag] CSR1000Aricent.504 -> CSR1000Aricent.504
+ * new tag] CSR1000Aricent.505 -> CSR1000Aricent.505
+
+Already up-to-date.
+ramesh@labuser-OptiPlex-3010:~/csr/wddi$
+ramesh@labuser-OptiPlex-3010:~/csr/wddi$
+ramesh@labuser-OptiPlex-3010:~/csr/wddi$ cd ../wdd/
+ramesh@labuser-OptiPlex-3010:~/csr/wdd$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+nothing to commit (woring directory clean)
+ramesh@labuser-OptiPlex-3010:~/csr/wdd$ git pull
+
+Already up-to-date.
+
+ramesh@labuser-OptiPlex-3010:~/csr$ cd mibs/
+ramesh@labuser-OptiPlex-3010:~/csr/mibs$ git status
+On branch CSR1000Aricent_REL4.0_Merge_2414
+nothing to commit (woring directory clean)
+ramesh@labuser-OptiPlex-3010:~/csr/mibs$
+ramesh@labuser-OptiPlex-3010:~/csr/mibs$
+ramesh@labuser-OptiPlex-3010:~/csr/mibs$ git pull
+
+ramesh@labuser-OptiPlex-3010:~/csr$ mae clean
+ramesh@labuser-OptiPlex-3010:~/csr$ mae all swpac
+
+/***************************************gdb*********************************************/
+
+handle SIG35 nostop noprint
+
+mount -o remount wr /
+
+vi /bin/ISS.sh 
+
+upgrade env -e
+
+upgrade env --setenv START_ISS no
+
+p ifmr->ifmr_pif->ifmp_typecount[type]
+
+up
+down
+
+
+(gdb) printf "%s\n", string
+/*******************MPLS TP upgrade***************?
+
+upgrade --env -e
+upgrade env --setenv FIXED_SERIAL YES
+reboot
+
+from node 2
+------------
+cd /mnt/sd/licenses/
+
+ls
+LA14050191.LIC LA14050191_4172.LICLA14050191_4720.LIC
+scp LA14050191.LIC root@195.168.1.43:/mnt/sd/licenses/
+
+cd /mnt/sd/licenses/
+
+ls
+LA14050191.LIC LA14050191_4172.LICLA14050191_4720.LIC
+scp LA14050191_4720.LIC root@195.168.1.15:/mnt/sd/licenses/
+vi LA14050191_4720.LIC 
+
+
+plugins for POE cards
+---------------------
+
+rm -rf /tftp
+scp 
+/etc/scripts/plugin_upgrade_bootloader 1 /tftp/plugin/bootstrap-PLUGIN_STANDARD.bin
+
+
+screen -x
+root
+admin123
+show swload
+
+cd /mnt/sd/config30
+ls
+rm *.conf
+ls
+cd /mnt/sd/cores
+ls
+
+helpdes mode
+aviat123
+debug npapi erps
+
+node 1
+--------
+License -- 4720
+License , Features SUPXYZ
+Version=2
+SerialNumber=LA1
+4050191
+CidNumber=12345678901234567890123456789012
+Hardware=CTR8540
+OSPF
+BGP
+OSPF_TE
+ISIS_TE
+L3VPN
+MPLS_TE
+ISIS
+MPLS
+RSVP
+L2V
+PN
+LDP
+MPLS_TDM
+MPLS_OAM
+BFD
+MPLS_TP
+====== SIGNATURE FOLLOWS ======
+NQsG+2nDLx+oueDyUQIlDzFEMFABiXcQO42v/o5PXo8y4YMeNRyhoh7t
+tD4THnTftZ
+2Lrt7E+Uc8yIyZHYch2gi9h13Zpm6LQJRVYVCFezMEO156yrS9Q9cQybdBv0+VYN
+4ip7GfIs5aDsbAxysMUrpJFnx7dTVY24DyIOa4aVWpZwi
+XUCqlAj0nJuYljgqvD
+iDO7XW1YYMssQnhUgv2oR8xHOAmixH+hbr5NVi3zZrcl5qpnOpVjEApfq1lByQ+T+
+WfisPTWvSV79bnf8uJQIwz/iDI16tMCdISQEs
+cU9iwVosq8EEBginrIcI/uc8P0Jf
+8O06aS8ZHMA==
+"
+show license' command.
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+screen -x
+There is no screen to be attached.
+
+upgrade env --env
+upgrade -e --setenv START_ISS yes
+reboot
+
+
+-----------------screen commands----------------
+screen -S ramesh----- > to create multiple sessions
+ctrl+a ctrl+c ----- > to create new sessions
+ctrl+d----- > delete the screen
+
+ctrl+a  [ up-arrow
+ctrl + r  --- > (reverse-i-search)
+
+Ctrl+a shift+h ---- > to save logs
+
+ctrl+a a d ----- > to go back to the linux prompt from CLI
+
+screen -ls ---- > to list the screens running
+
+screen -dr ramesh ----> to run the ramesh screen
+
+ctrl+a shift+a----> to rename the screen
+
+script 1.txt---- > to save the logs in 1.txt file
+
+screen -X -S 5058.ramesh1 quit   --->to kill the screen
+
+screen -d 8684.ramesh
+[8684.ramesh detached.]
+
+
+vim commands
+--------------
+vi !$    --- > To edit previously opened file
+:e nputil.c  --> to previous opened file
+:set tags=tags;
+:se nu
+:se nonu
+:wqa
+:qa
+:sp nputils.c--> to open another window
+:file---> to know the file
+:set paste
+:we
+:tsel
+:ta NpMplsUpdateVlanEditOptions
+:tse
+:e <filename>
+:ts CliCxDynQueueWeight
+ctrl+w ctrl+w to move from one file to another file
+dp -- > to copy one line and paste into another file
+
+To remove Extra spaces: 
+:%s/\s\+$//
+
+taglist : To display function list
+--------------------------------------
+cd /usr/src
+
+$ wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701
+
+Step 2: Install the TagList Vim Plugin
+
+$ mkdir ~/.vim # if the directory does not exist already
+
+$ cd ~/.vim
+
+$ unzip /usr/src/taglist.zip
+Archive:  /usr/src/taglist.zip
+  inflating: plugin/taglist.vim
+  inflating: doc/taglist.txt
+  
+  
+Step 3: Enable the plugin in the ~/.vimrc
+
+Add the following line to the ~/.vimrc to enable the plugin for Vim editor.
+
+$ vim ~/.vimrc
+filetype plugin on
+
+------------------------------------------------------
+
+linux commands
+--------------
+tail -f <filename.txt>      /*To display contents copying into the file while while executing >>filename.txt command*/
+
+netstat
+
+top  /*it will dipaly cpu usage*/
+
+grep
+
+cat
+
+route
+
+strings /usr/local/lib/liblldpctl.a | grep lldp
+locate 
+
+to comment multiple lines
+--------------------------
+
+First, move the cursor to the first char of the first line in bloc code you want to comment, then type:
+
+CTRL + V
+then vim will go in to VISUAL BLOC mode. Use j to move the cursor down until you reach the last line of your code bloc. Then type:
+
+Shift + I
+then ESC and the code bloc is now commented.
+
+after highlight them in VISUAL BLOC mode.
+
+
+(or)
+You can do it with the following command:
+
+
+for comment, and for uncomment:
+
+/
+
+to comment all lines
+--------------------
+
+
+/---for uncoment
+To copy paste multiple lines
+-------------------------------
+command ‘Y’ or ‘yy’ copies (yans) one or more lines. To copy one line, two lines, 10 lines, and all lines to the end of the file, respectively:
+
+Y 2Y
+10Y
+yG
+
+To paste the text contained in the buffer above (uppercase P) or below the current cursor position (lowercase p), respectively:
+
+P p
+
+It is also possible to yan text within a line. The following commands yan text from the current cursor position to the end of the word and the end of the line, respectively:
+
+yw y$
+
+to delete word and line
+
+dw d$
+
+The same commands paste the text within a line. Lower case p pastes after the cursor position and upper case P pastes before.
+
+Cut and paste:
+-------------------
+Position the cursor where you want to begin cutting.
+Press v to select characters (or uppercase V to select whole lines).
+Move the cursor to the end of what you want to cut.
+Press d to cut (or y to copy).
+Move to where you would lie to paste.
+Press P to paste before the cursor, or p to paste after.
+
+Searching and replacing
+-----------------------
+suppose you want to search some text for the string "cherry." Type the following and press ENTER:
+
+:s/cherry
+
+The syntax for replacing one string with another string in the current line is
+
+:s/pattern/replace/
+
+Here "pattern" represents the old string and "replace" represents the new string. For example, to replace each occurrence of the word "lemon" in a line with "orange," type:
+
+:s/lemon/orange/
+
+The syntax for replacing every occurrence of a string in the entire text is similar. The only difference is the addition of a "%" in front of the "s":
+
+:%s/lemon/orange/
+
+Case sensitive Find and Replace
+Find each 'UNIX' and replace with 'bar':
+:%s/UNIX/bar/gI
+
+Same command with confirmation:
+:%s/UNIX/bar/gIc
+
+Find 'UNIX' and replace with 'Linux' all lines between line 100 and line 250, enter:
+:100,200s/UNIX/Linux/g
+
+in vimdiff:
+------------------
+
+ctrl+w ctrl+w to move from one file to another file
+dp -- > to copy one line and paste into another file
+
+--------------------To merge new branch-----------------------------------
+
+cd csr
+git clean -fdx!
+switchdefault
+mac-address-table static unicast 00:00:00:00:00:01 vlan 100 interface gigabitethernet 0/2
+mac-address-table static unicast 00:00:00:00:00:02 vlan 200 interface gigabitethernet 0/2
+mac-ad
+cd iss/
+git clean -fdx
+cd ../wddi/
+git clean -fdx
+
+cd ../wdd/
+git clean -fdx
+cd ../mibs/
+git clean -fdx
+cd ../../
+cd csr
+cd iss/
+git status
+cd ../
+git checkout CSR1000Aricent_REL4.0_Merge_2414
+git pull
+git submodule update --init --recursive
+cd iss/
+git checkout -- .
+cd ../
+git submodule update --init --recursive
+ git status
+cd iss/
+git checkout CSR1000Aricent_REL4.0_Merge_2414 ; git pull
+git status
+cd ../wddi/
+ git checkout CSR1000Aricent_REL4.0_Merge_2414 ; git pull
+ cd ../wdd
+git checkout CSR1000Aricent_REL4.0_Merge_2414 ; git pull
+cd ../mibs/
+
+ git checkout CSR1000Aricent_REL4.0_Merge_2414 ; git pull
+
+ cd ../
+./sync-3rdparty
+mae all swpac
+
+
+--------------------to update sw pac in target--------------------------
+ramesh@labuser-OptiPlex-3010:~$ telnet 195.168.1.13
+Trying 195.168.1.13...
+Connected to 195.168.1.13.
+Escape character is '^]'.
+
+ctr8540 login: root
+Password:
+
+
+clear
+ mount -o remount wr /
+ scp ramesh@195.168.1.85:/home/ramesh/csr/BUILD.CSR1000V3/ctr8540-master.31.3101-ramesh@mpc5-85.36.swpac /tmp/
+ 
+
+c t
+swload
+load uri file:///tmp/ctr8540-master.31.3101-ramesh@mpc5-85.36.swpac activate
+s s
+ After Load Progress:100
+
+activate
+s s
+
+/*****errthana swpac*********/
+mount -o remount wr /
+scp ramesh@195.168.1.85:/home/eerthana/2857_build/BUILD.CSR1000V3/ctr8540-master.21.2857-eerthana@mpc5-85.7.swpac /tmp/
+
+c t
+swload
+load uri file:///tmp/ctr8540-master.21.2857-eerthana@mpc5-85.7.swpac
+
+
+/************3124 build************/
+
+scp ramesh@195.168.1.85:/home/charumathi/ctr8540-3.1.0.31.3124.swpac /tmp/
+
+c t
+swload
+load uri file:///tmp/ctr8540-3.1.0.31.3124.swpac activate
+
+
+
+/************* when Traffic-eng tunnel is not conming UP *********************/
+c t
+shut bf
+shut bfd
+rs
+rsvp
+int gi 0/2
+sh
+no sh
+end
+
+sh mp tr
+sh mp traffic-eng tu
+sh mp traffic-eng tunnels
+
+/********************************************************************************/
+how to chec out a new code base
+
+cd name
+git clone git://172.30.18.83/git/aricent/sw/main.git .
+git submodule update --init --recursive
+
+to update 
+
+./sync-3rdparty 3510
+git branch
+
+copy update_codebase.sh from /home/hari/
+
+cp /home/hari/update_codebase.sh .
+
+git branch
+
+./update_codebase.sh CSR1000Aricent_MTNSA_R3.3_ER
+./sync-3rdparty 3510
+mae clean
+
+mae swpac all
+/**********************************ldp debug logs*************************************************/
+screen -x
+root
+admin123
+
+helpdes mode
+aviat123
+
+debug npapi tdm
+end
+
+
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+debug mpls l2vpn all 
+debug mpls common database 
+debug mpls ldp ad
+debug mpls ldp dump-messages all direction both
+debug mpls ldp interface 
+debug mpls ldp session 
+debug mpls ldp process 
+debug mpls ldp messages sent 
+debug mpls ldp messages receive
+
+debug bfd all
+
+
+no debug mpls l2vpn all 
+no debug mpls common database 
+no debug mpls ldp ad
+no debug mpls ldp dump-messages all
+no debug mpls ldp interface 
+no debug mpls ldp session 
+no debug mpls ldp process 
+no debug mpls ldp messages sent 
+no debug mpls ldp messages receive
+
+helpdes mode
+aviat123
+
+debug npapi tdm
+end
+
+
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+debug mpls l2vpn all
+debug mpls te all 
+debug mpls common database 
+debug rsvp dump-messages all direction both
+debug rsvp dump-messages level detail
+debug rsvp interface
+debug rsvp all
+debug mpls common database debugging
+debug ip ospfte all
+debug ip ospfte cspf
+
+no debug mpls l2vpn all 
+no debug mpls te all
+no debug mpls common database
+no debug rsvp dump-messages all direction both
+no debug rsvp dump-messages level detail
+no debug rsvp interface
+no debug rsvp all
+no debug mpls common database
+no debug ip ospfte all
+no debug ip ospfte cspf
+
+/**************************************************************************/
+Fixed in branch R3.3 "CSR1000Aricent_MTNSA_R3.3_ER" with commit Id: 6fb417
+
+Thanks
+
+
+Fixed in Aricent Showstopper branch 'CSR1000Aricent_MTNSA_R3.1_ShowStopper' with commit id: 7dc551
+/***********************************************************/
+git reset HEAD
+
+
+git log f4a31a3ea344055c6b53b87d09b691c3b4cf7fec
+git diff fe92d6961044c43758a6ea18177003319553f35c f4a31a3ea344055c6b53b87d09b691c3b4cf7fec > diff
+
+git log -p <commit-id>
+
+git diff <older commit id> <latest commit id>
+
+git revert 204b0244e2bd948f946bd6d68cf51980dc2f7200 --no-commit
+
+git reset
+git diff
+git checkout -- .
+
+
+git cherry-pick 5d371d1cdaf301554f4e7c0376a9371f682c63ea --no-commit
+
+git reset HEAD
+
+git reset --hard 28a2c9277972cd92140370b3be78b1755c6d39a7  ---> use this when ur branch is a head of 'x' commits
+
+git status
+git checkout -- .
+git status
+
+
+
+git cherry-pick 5f2fe3d8f32e18d24cc050021ebc6d0ab3dde9f9 --no-commit
+git log
+git status
+git diff
+make
+git status
+git reset HEAD
+git checkout -- .
+
+
+git cherry-pick 5f2fe3d8f32e18d24cc050021ebc6d0ab3dde9f9
+git log
+git status
+git push
+cd ../
+git status
+ git add iss/
+ git commit
+git log
+git push
+
+
+git blame 
+
+git diff c3d60273ffc1bf9c7cf61ba86ac9b43d3d6b5e55 e6a5deac105dce6248b60c066c848c3a1680ae8b code/future/eoam/src/
+git log e6a5deac
+git log
+grep -nr EOAM_LINK_FAULT code/future/eoam/
+grep -nr EOAM_LINK_FAULT_TRIG_MSG code/future/eoam/
+git blame code/future/eoam/src/emcltinf.c > abc
+vimdiff CSR1000Aricent_MTNSA_R3.2/iss/code/future/eoam/src/emcltinf.c CSR1000Aricent_REL2.4/iss/code/future/eoam/src/emcltinf.c q
+diff -r CSR1000Aricent_MTNSA_R3.2/iss/code/future/eoam/ CSR1000Aricent_REL2.4/iss/code/future/eoam/ > abc
+StripExe code/future/LR/ISS.exe
+
+conf t
+set cli pag off
+end
+
+helpdesk mode
+csr#mb$rAc2x
+debug npapi vlan all_fail
+end
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+screen -x
+root
+admin123
+helpdesk mode
+aviat123
+debug npapi vlan
+end
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+debug npapi tdm
+debug npapi vlan
+end
+
+screen -x
+root
+admin123
+
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+! 
+switch  default 
+shutdown spanning-tree
+set gvrp disable
+set gmrp disable
+shutdown garp
+! 
+
+cd /mnt/sd
+ls
+mkdir licenses
+
+cd /mnt/sd/licenses
+scp *.LIC root@195.168.1.47:/mnt/sd/licenses
+
+wget http://172.30.18.73/31_builds/ctr8540-3.1.0.31.3100.swpac
+scp ctr8540-3.1.0.31.3100.swpac root@195.168.1.49:/tmp
+
+ISS 2692
+----------------
+o Description - MPLS: unidirectional VPWS over mplstunnel with e2e
+o Modules and functionality affected by the fix - VPWS, ISIS-TE and RSVP-TE
+o Protocols that will need retesting - VPWS, ISIS-TE and RSVP-TE
+o Configurations that require testing - VPWS, ISIS-TE and RSVP-TE
+o CLI Changes - none
+o Any other risk areas - none
+o Developer tests that have been performed - As per JIRA 
+o Results of the developer tests - PASS
+o Identification of the ATS tests that will validate the fix - none
+o Any other notes that will allow the test teams to fully test the fix and any other areas where risk has been identified - none
+
+ISS-3027
+------------
+Description - Issue is with MPLS NPAPI invocation 
+FsMplsHwDeleteL3FTN is not invoked for older LSPs
+Fix is done in NPAPI such that all the services over that old LSP is modified new LSP and the old LSP is deleted
+Modules and functionality affected by the fix - MPLS
+Protocols that will need retesting - MPLS
+Configurations that require testing - MPLS-LSP related config. LDP/RSVP-TE
+CLI Changes - none
+Any other risk areas - None
+Developer tests that have been performed - 
+Results of the developer tests - Pass
+Identification of the ATS tests that will validate the fix - None
+Any other notes that will allow the test teams to fully test the fix and any other areas where risk has been identified - None
+
+2288 July
+2000 June
+2632 --- routing related patch
+2601 --- L2VPN : Pseudowire is getting down after shut the link connected to core and observing the L2VPN failure message in R1
+3086 --- LDP: TCP session for targeted LDP is dropped and re-established when interface for IP next hop goes down even an alternate IP path toward LDP peer exists
+
+
+ISS 3417
+------------
+Hi,
+Impact Analysis:
+Description - Skip IP interface with no ip address set (in the fix,we check for '0' mask) and avoid them while getting the prefix length
+Modules and functionality affected by the fix - BGP, L3VPN
+Protocols that will need retesting - L3VPN, iBGP and eBGP
+Configurations that require testing - L3VPN and BGP
+CLI Changes - None
+Any other risk areas - None
+Developer tests that have been performed - Jira scenario of ISS-3417, shut/no shut of interface between CE and PE and shut/no shut of interface in core network
+Results of the developer tests - PASS
+Identification of the ATS tests that will validate the fix - None
+Any other notes that will allow the test teams to fully test the fix and any other areas where risk has been identified - None
+Thanks,
+Ivan
+
+Description - This fix adds missing functionality to delete adjacencies from Extended IS Reachability TLVs from LSP PDUs when an ISIS point-to-point circuit goes down in wide metric mode.
+o    Modules and functionality affected by the fix - ISIS & ISIS-TE using point-to-point circuits
+o    Protocols that will need retesting - ISIS & ISIS-TE using point-to-point circuits
+o    Configurations that require testing - ISIS & ISIS-TE routed networks using point-to-point circuits
+o    CLI Changes - none
+o    Any other risk areas - none
+o    Developer tests that have been performed - created a point-to-point ISIS wide metric network, shut down a point-to-point link to ensure adjacencies in the EXT IS TLVs for that link is removed from the ISIS database on all units that are reachable in the network, ensured any routes that used that link are removed or replaced in the routing table. Repeated tests with ISIS in narrow metric mode and ISIS-TE
+o    Results of the developer tests - PASS
+o    Identification of the ATS tests that will validate the fix - none
+o    Any other notes that will allow the test teams to fully test the fix and any other areas where risk has been identified - none
+
+
+ISS-3427
+------------
+Hi Bojana,
+Can you pl. clarify whether this JIRA and issue reported in CSR-15144(ISS-3318) is same. I see in CSR-15144 you had tried both P2P and broadcast and here you were trying P2P. Pl. correct me if we are missing something here.
+We had verified it in our latest R3.2 GA build and is working. Can you pl. cross check and confirm so that we can close this JIRA.
+Thanks
+Viknesh
+
+
+ISS-2457
+--------
+Hi,
+          I have following queries regarding path-option number. 
+
+1) kindly let us know why  path-option 1 is added by default, when explicit-path is configured without any path-option number 
+2) If path option number 1 is default value then why it is displaying in show running command ( default values will not be displayed in show running )
+
+Thanks,
+Ramesh
+
+!
+!
+l2 vfi VPLS_A manual
+vpn 1
+neigh 27.27.27.27 pw pw 113 gr 1 en mp mpl no pwt ethernet
+neigh 19.19.19.19 pw pw 114 gr 1 en mp mpl no pwt ethernet
+end
+
+!
+!
+switch default
+vlan 100
+ports gig 0/6 
+xconnect vfi VPLS_A
+exit
+vlan 1
+no ports
+end
+
+------------------------------------------------------
+PC: 172.30.18.71
+Username: regression
+Password: regression
+Go to this Path : /home/regression/workspace_subba/framework
+ 
+ 
+1.       export PYTHONPATH=/home/regression/workspace_subba/framework
+2.        ./run.sh testLists/3648_day3.txt
+ 
+ 
+ /home/regression/workspace_subba/framework/Result/3.2.0(42.3648)/ECFM 
+ for see the logs 
+ passed or failed 
+-------------------------------------------------------------
+
+/home/regression/JENKIN_WORKSPACE_NEW/AVIAT-SVT-REG/Automation/isstestsuite 
+/home/regression/JENKIN_WORKSPACE_NEW/AVIAT-SVT-REG/Automation/isstestsuite 
+
+cd config
+vi config.common.exp
+
+ ./init 
+
+
+ pc: 172.30.18.73 
+
+
+regression 
+regression 
+
+telnet 172.30.18.67 10030
+telnet 172.30.18.67 10030
+ cd /home/regression/JENKIN_WORKSPACE_NEW/AVIAT-SVT-REG/Automation/isstestsuite 
+
+---------------------------image upgrade--------------------------------------------
+official build path : 
+-----------------------
+PC : 172.30.18.81
+regression
+regression
+
+path : /var/www/Builds/Aviat_builds
+
+helpdesk mode
+csr#mb$rAc2x
+
+c t
+vlan 2;
+no ports
+po gi 0/1 un gi 0/1
+exit
+int gi 0/1;
+map switch default;
+no shut;
+switchport pvid 2
+exit;
+int vlan 2;
+ip address 50.0.0.70 255.255.255.0;
+no shut;
+end;
+ 
+Image path in 73 server :cd /var/www/html
+
+c t
+swload
+load uri http://50.0.0.1/ctr8540-master.32.3633-ganesh@mpc5-85.60.swpack activate
+end
+
+scp ctr8540-master.32.3633-ganesh@mpc5-85.60.swpack regression@172.30.18.73:/var/www/html/
+scp ganesh@172.30.18.85:/home/ganesh
+
+/*********Production mode to normal mode************/
+helpdesk mode
+csr#mb$rAc2x
+
+shell
+upgrade env --env
+upgrade -e --setenv PRODUCTION_MODE 0
+upgrade -e --unsetenv silent
+
+screen -x
+root
+admin123
+
+config term
+set cli pagination off
+end
+config term
+line console
+exec-timeout 18000
+end
+
+helpdesk mode
+aviat123
+run script /nonvol/int_flap.sh
+
+c t
+ethernet cfm cc level 6 vlan 10 interval one-sec
+end
+
+
+Procedure for code check-in
+---------------------------------
+
+1) First update the codebase
+2) verify wheter any code changes are present in codebase "git status" . If present give "git checkout -- ."
+3) patch -p0 -i ISS_3054.diff    and give make
+4) git status
+5) git add code/future/ecfm/src/cfmlckin.c
+6) git status
+7) git commit
+     Fix for ISS-3054 : Y.1731 -- “Received LCK PDU” counter does not work
+	 ctrl+x
+	 y
+8) git log
+9) git status
+10)git push
+11) git status
+12) cd ..
+13) git status
+14) git add iss/
+15) git status
+16) git commit
+    Fix for ISS-3054 : Y.1731 -- “Received LCK PDU” counter does not work
+	 ctrl+x
+	 y
+17) git log
+18) git status
+19) git push
+20) git status
+
+
+/********************************/
+lsof --> to know list of open files
+
+ramyag@marsbuild:~/src$ rm -rf ibos_69_latest/
+rm: cannot remove `ibos_69_latest/.git/objects/pack/.nfs0000000009da406500000a6a': Device or resource busy
+
+ramyag@marsbuild:~/src$ lsof +D ibos_69_latest/.git/objects/pack/
+COMMAND   PID   USER   FD   TYPE DEVICE  SIZE/OFF      NODE NAME
+grep    13858 ramyag    9r   REG   0,23 606607026 165298277 ibos_69_latest/.git/objects/pack/.nfs0000000009da406500000a6a
+grep    13858 ramyag   12r   DIR   0,23      4096 165296629 ibos_69_latest/.git/objects/pack
+ramyag@marsbuild:~/src$ kill -9 13858
+ramyag@marsbuild:~/src$ lsof +D ibos_69_latest/.git/objects/pack/
+
+
+#error ppasd
+
+
+
+/***************************************************************************/
+to remove crlf in notepad++
+View menu -> Show Symbol…then choose your desired setting of the top 3 choices.
+
+-----------------------------------------------------------------

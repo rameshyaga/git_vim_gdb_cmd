@@ -1,0 +1,860 @@
+Important websites
+=================
+https://mail.google.com/mail/u/0/#inbox
+https://ipinfusion.greytip.in/home.do
+http://wiki.ipinfusion.com/mediawiki/
+http://jira.ipinfusion.com/jira/browse/IT-2072
+http://10.12.3.45/gerrit/#/c/38404/
+https://www.timemgmtsolutions.com/cgi-bin/webtimetracker.exe
+
+
+Welcome to the IPI MPLS team. Please have a look at the below items:  
+
+1. Mail to Subeesh S(Subeesh Sivanandan Subeesh.Sivanandan@ipinfusion.com)  for Gerrit access and permission (http://10.12.3.45/gerrit/#/)
+
+	a. Copy Managers – Gururaj K (in cc) and Vikram A.
+
+2. Request IT for a 8GB Centos 64 bit machine.
+
+	a. Raise a JIRA IT ticket for the same and assign the priority as Critical
+
+3. Download the ZebOS code.
+
+	a. Please take help from Suprit (suprit.japagal@ipinfusion.com) for this.
+
+4. Training material
+
+	a. Please have a look the L2VPN training videos:
+
+       i.      Path - \\filer02\Public\TRAINING\MPLS_Docs\MPLS-Training\L2VPN
+
+       ii.      Have a 3-4 node set up and try out the basic L2VPN set up with ZebOS
+
+	   1.       For CMD ref guide use the following link - http://intraipi.corp.ipinfusion.com/TechPub/Archive%20for%20Public%20Use/ARS/ZebOS-XP-2-2/
+
+
+===================================================================
+
+Ipinfusion Study Material Path
+==============================
+\\filer02 --> public/training
+
+https://ipinfusion.greytip.in/home.do
+
+http://wiki.ipinfusion.com/mediawiki/index.php/OcNOS_Demo_VM
+
+
+http://10.12.40.60/jenkins-archives-2/demo-vm/images/OCNOS-1-3-4-ZEBM/OCNOS_DC_MPLS_ZEBM/OcNOS-1.3.4.250-OCNOS_DC_MPLS_ZEBM/
+
+Jira
+======
+http://jira.ipinfusion.com/jira/projects/IT
+
+Printer
+=======
+10.12.3.23   -->
+
+Gerrit
+=======
+http://10.12.3.45/gerrit/#/
+
+username : ramesh.yaga@ipinfusion.com
+password : Ndivya@448
+
+CMD ref guide use the following link:
+=====================================
+http://intraipi.corp.ipinfusion.com/TechPub/Archive%20for%20Public%20Use/ARS/ZebOS-XP-2-2/
+
+EVPN IPINFUSION
+---------------
+http://intraipi.corp.ipinfusion.com/Engineering/CMMI_Process_Docs/ZebOS-XP%202.1-Docs/REQUIREMENTS/ERD/MPLS/BGP_eVPN_MPLS_VPLS_Tunnel/
+http://intraipi.corp.ipinfusion.com/Engineering/CMMI_Process_Docs/http://intraipi.corp.ipinfusion.com/Engineering/CMMI_Process_Docs/
+http://intraipi.corp.ipinfusion.com/Engineering/CMMI_Process_Docs/ZebOS-XP%202.1-Docs/DESIGN/MPLS/BGP_eVPN_MPLS_VPLS_Tunnel/
+
+ 
+EVPN RFC
+---------
+https://tools.ietf.org/html/rfc7432#section-6.3
+
+EVPN implementation
+===================
+http://10.12.3.45/gerrit/#/c/38404/
+http://10.12.3.45/gerrit/#/c/40472/
+
+EVPN google Links
+=================
+https://rickmur.com/evpn-rfc-7432-explained/
+https://www.cisco.com/c/en/us/products/collateral/routers/asr-9000-series-aggregation-services-routers/whitepaper_c11-731864.html
+https://www.juniper.net/documentation/en_US/junos/topics/concept/evpn-vlan-services-overview-qfx-series.html
+
+====================================================================================================
+IPI Websites
+------------
+WIKI Website - http://wiki.ipinfusion.com (Windows username and Password)
+
+NOTE:  Login credentials are required, if you need to upload/edit any page.  Account access available upon request with approval.  You must be connected to the internal IPI network to access Intranet websites.
+
+GIT & Gerrit:
+-------------
+To access the GIT & Gerrit system, please use http://10.12.3.45/gerrit/login
+
+Username & Password is the same of your Laptop username & password.
+
+(Contact Subeesh.Sivanandan@ipinfusion.com in case of any login issue)
+
+
+JIRA:
+-----
+JIRA is an Engineering defect tracking system.  To access JIRA you can use the below URL
+
+http://jira.ipinfusion.com
+
+Username & Password is the same of your Laptop username & password.
+
+Time Tracking
+--------------
+To access the Time Tracking system, please use the below link
+
+https://www.timemgmtsolutions.com/cgi-bin/webtimetracker.exe
+
+After you open the link, before you login, in the upper-right corner of the web page, there is a “Change Password” link for you to change your password.
+
+Company ID : ip
+Username : RAMESHYA
+Password : RAMESHYA
+
+Share Drives in IPI:
+--------------------
+Blrshare = \\10.12.3.24 (ID & Password is ipiblrshare)
+
+Filer02 = \\filer02.ipinfusion.com
+
+Printer installation = \\10.12.3.23 (You can see all drivers for printers block wise, Double click on the on the icon for installing your respective block’s printer)
+
+Individual Share Drive - H: drive in My Computer
+
+Department Share Drive - S: drive in My Computer
+
+For IT related Help/Issues
+---------------------------
+Please contact the IT Service Desk by raising a ticket in JIRA by using the below link
+
+http://jira.ipinfusion.com/jira/secure/CreateIssue.jspa
+
+============================================================================================
+Address
+=======
+IP infusion Software India Pvt Ltd,
+RMZ Centennial,
+Block D - 401, 4th Floor,
+Kundanahalli Main road,
+Bengaluru - 560048, Karnataka
+Phone: 9958109189/9962945720
+
+==========================================
+VM configuration
+-----------------
+In vm --> change adapter4 to bridge-adapter
+
+vi /etc/network/interfaces --> change from static to dhcp
+network-restart
+
+
+To access code
+==============
+linux console: ssh-keygen
+copy the key in gerrit --> settings-->SSH Public Keys --> Add key
+In gerrir--> projects-->List-->ZebOS8NG-->git clone http://10.12.3.45/gerrit/ZebOS8NG
+In linux console : git clone http://10.12.3.45/gerrit/ZebOS8NG
+username: ramesh.yaga
+password from gerrit ->settings-->http-password-->
+
+
+cd /home/
+[root@loc/alhost home]# mkdir images
+[root@localhost home]# 
+[root@localhost home]# cd images/
+[root@localhost images]# wget http://10.12.52.150/jenkins-archives/demo-vm/images/XP-master/ciena-non-zebm/XP-2.3.0.15-ciena-non-zebm/DEMO_VM-XP-2.3.0.15-ciena-non-zebm-S0-P0.qcow2
+
+
+On Centos 8GB PC
+================
+ifconfig enp13s1f1 10.12.23.31 ip netmask 255.255.255.0
+route add default gw 10.12.23.1
+
+open xshell for vpc creation
+============================
+For steps
+http://wiki.ipinfusion.com/mediawiki/index.php/VPC_Installation_Procedure
+
+ssh root@10.12.23.25
+root123
+
+create images folder in home and cp image by using below command
+	http://10.12.52.150/jenkins-archives/demo-vm/images/XP-master/ciena-non-zebm/XP-2.3.0.15-ciena-non-zebm/
+	
+	wget http://10.12.52.150/jenkins-archives/demo-vm/images/XP-master/ciena-non-zebm/XP-2.3.0.15-ciena-non-zebm/DEMO_VM-XP-2.3.0.15-ciena-non-zebm-S0-P0.qcow2
+create vpc in home folder
+cp vpc folder from any centos machine into /home folder
+
+cd scripts
+vi vpc-init-scripts
+--> modify below lines
+	brctl addif veth0 enp13s1f1
+	ifconfig veth0 hw ether 00:02:a5:4f:03:9b
+	ifconfig veth0 10.12.23.31 netmask 255.255.255.0 up
+
+vi /etc/sysconfig/network-scripts/ifcfg_enp13s1f
+-->	HWADDR=2C:27:D7:41:2B:7C
+	TYPE=Ethernet
+	BOOTPROTO=static
+	IPADDR=1.1.1.1			--->ADD this
+	NETMASK=255.255.255.0	--->ADD this and compare remaining things
+	DEFROUTE=yes
+	PEERDNS=yes
+	PEERROUTES=yes
+	IPV4_FAILURE_FATAL=no
+	IPV6INIT=yes
+	IPV6_AUTOCONF=yes
+	IPV6_DEFROUTE=yes
+	IPV6_PEERDNS=yes
+	IPV6_PEERROUTES=yes
+	IPV6_FAILURE_FATAL=no
+	NAME=enp0s25
+	UUID=cce0f34c-3930-4d88-82b3-8bb0a9c80d78
+	ONBOOT=yes
+
+vi /etc/rc.local
+--> copy below lines
+	/home/vpc/scripts/vpc-init-scripts
+	/home/vpc/scripts/vpc_hubs
+reboot
+
+After creating vpc assign mgmt ip address as below
+--------------------------------------------------
+
+open vpc by using below command on centos machine
+
+virt-manager
+
+username : root
+password : root
+
+vi /etc/network/interfaces
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+address 10.12.23.83
+netmask 255.255.255.0
+network 10.12.23.0
+broadcast 10.12.23.255
+gateway 10.12.23.1
+# dns-* options are implemented by the resolvconf package, if installed
+dns-nameservers 10.12.3.23
+
+=====================================================================
+
+Docker Machine
+================
+To get docker machine
+
+Follow the steps in below link
+http://wiki.ipinfusion.com/mediawiki/index.php/Steps_to_create_and_use_VM_on_DESK_Tool
+
+
+https://10.12.43.20/dashboard/
+IPINFUSION
+ramesh.yaga
+Ndivya@448
+
+
+---------------------
+open xhell and connect to docker machine using ssh
+
+ssh root@10.12.43.102	--->docker machine ip
+root123
+
+rm ~/.bash_history
+cd /home
+mkdir xp_01
+cd xp_01
+
+git config --global user.name "ramesh.yaga"
+git config --global user.email "ramesh.yaga@ipinfusion.com"
+
+linux console: ssh-keygen
+cat /root/.ssh/id_rsa.pub
+copy the key in gerrit --> settings-->SSH Public Keys --> Add key
+In gerrit--> projects-->List-->ZebOS8NG-->git clone http://10.12.3.45/gerrit/ZebOS8NG
+In linux console : git clone http://10.12.3.45/gerrit/ZebOS8NG
+username: ramesh.yaga
+password from gerrit ->settings-->http-password-->Zw5NaZgbuGZT
+
+cd ZebOS8NG/
+git checkout XP-master
+
+cd /usr/src/
+scp linux-headers-3.16.7-xp-2.1.0.1.tar .   --> from any machine
+tar -xvf linux-headers-3.16.7-xp-2.1.0.1.tar
+cd /home/xp_01/
+ln -sf /usr/src/linux-headers-3.16.7-xp-2.1.0.1 linux-source
+cp ZebOS8NG/setup.sh .
+source setup.sh
+cd ZebOS8NG/
+./config.opt/SKU/customer/ciena-non-ha-zebm-config.sh   -->for evpn
+cd platform/linux/
+vim Rules.options  -->remove -o2 from EXTRA_CFLAGS=-g -o2
+make clean
+make all
+
+make clean-lib
+make all-lib
+
+code check-in
+=============
+./tools/gitgerritconfig.sh
+git commit -a
+git push origin HEAD:refs/for/XP-master
+
+For amend changes
+=================
+git commit -a --amend
+git push origin HEAD:refs/for/XP-master
+
+ocnos
+======
+git commit -a --amend
+git push origin HEAD:refs/for/ocnos-sp-master
+
+
+
+
+git commit --amend <file1> <file2>
+===============================================
+cd /etc/libvirt/qemu/
+
+Below things are added when I get yum isntall update got failed that means dns server is missing
+vi /etc/resolv.conf
+--> Add dns server
+	nameserver 10.12.3.23
+	
+vi /etc/ssh/sshd_config
+vi /etc/ssh/sshd_config_zebm
+
+
+	
+===============Running vpc's=======================
+
+cd /home/vpc/scripts
+./connect vpc1_eth1 vpc2_eth1
+./connect vpc1_eth2 vpc3_eth2
+./connect vpc2_eth3 vpc3_eth3
+./connect vpc4_eth4 vpc3_eth4
+./connect vpc4_eth2 vpc2_eth2
+./connect vpc4_eth1 vpc5_eth1
+./connect vpc6_eth2 vpc5_eth2
+
+ssh root@10.12.23.83
+root
+./stop.sh  -->run it on all vpc's to kill all the running process before copting new binaries
+copy all bin files into vpc /usr/local/sbin   ---> scp bin/* root@10.12.23.83:/usr/local/sbin/
+cd /usr/local/sbin/
+/home/start.sh
+cmlsh
+
+If vpc not able to 	
+=============================
+ssh root@10.12.23.25
+root123
+
+virsh
+
+list
+
+start VPC1
+
+
+Steps to compile for imish
+==========================
+  451  cd xp_01/
+  452  ls
+  453  source setup.sh
+  454  cd ZebOS8NG/
+  455  ./config.opt/SKU/customer/ciena-non-ha-zebm-config.sh  
+  456  vim config.opt/SKU/customer/ciena-non-ha-zebm-config.sh  --> --enable-imish
+  457  ./config.opt/SKU/customer/ciena-non-ha-zebm-config.sh
+  458  cd platform/linux/
+  459  vim Rules.options
+  460  make clean-imish
+  461  make clean-mplsd
+  462  make all
+  463  ls
+  464  cd bin/
+  465  ls
+  466  cd ../
+  467  scp bin/* root@10.12.23.84:/usr/local/sbin/  --> first stop processes in 10.12.23.83 by running ./stop.sh
+  
+  
+gdb
+====
+gdb a `pgrep mplsd`
+pidof mplsd
+pgrep mplsd
+gdb -p `pgrep mplsd`
+
+(gdb)
+(gdb) b mpls_evpn_service_type
+Breakpoint 1 at 0x4e45de: file evpn/mpls_evpn_cli.c, line 91.
+(gdb) c
+Continuing.
+
+Breakpoint 1, mpls_evpn_service_type (cli=0x109bb60, argc=2, argv=0xfa1620) at evpn/mpls_evpn_cli.c:91
+91      evpn/mpls_evpn_cli.c: No such file or directory.
+(gdb) p argv[0]
+$1 = 0x116afb0 "vlan-aware"
+(gdb) p argv[1]
+$2 = 0x1139160 "port-based"
+(gdb) c
+Continuing.
+
+Breakpoint 1, mpls_evpn_service_type (cli=0x109bb60, argc=2, argv=0xfa1620) at evpn/mpls_evpn_cli.c:91
+91      in evpn/mpls_evpn_cli.c
+(gdb) p argv[1]
+$3 = 0x10d4620 "2"
+(gdb) c
+Continuing.
+^C
+
+  
+  
+
+screen commands
+================
+Below files need to be copy in /etc/ folder
+-------------------------------------------
+vimrc
+bashrc
+screenrc
+
+[root@localhost ~]# screen -r 26143.ramesh
+There is a screen on:
+        26143.ramesh    (Dead ???)
+Remove dead screens with 'screen -wipe'.
+There is no screen to be resumed matching 26143.ramesh.
+[root@localhost ~]# screen -wipe 26143.ramesh
+------------------------------------------------------------
+You can kill a detached session which is not responding within the screen session by doing the following.
+
+Type screen -list to identify the detached screen session.
+
+~$ screen -list  
+    There are screens on:  
+         20751.Melvin_Peter_V42  (Detached)  
+Note: 20751.Melvin_Peter_V42 is your session id.
+
+Get attached to the detached screen session
+
+screen -r 20751.Melvin_Peter_V42
+Once connected to the session press Ctrl + A then type :quit
+--------------------------(or)----------------------------------------
+screen -X -S [session # you want to kill] quit  --> to kill a session
+
+----------------------------------------------------------------------
+session timeout
+---------------
+con ter
+line vty 0 39
+exec-timeout 0 0
+end
+
+==================================
+Linux commands
+--------------
+tcpdump -i <interface> -s 65535 -w <some-file>
+
+
+=============================
+cmlsh
+Can't connect to CMLD
+export ZEBM_DB_CONF_DIR=/usr/local/sbin/cml_utility
+cmld -d
+cmlsh
+
+========================
+If apt-get is throwing error
+
+vi /etc/resolv.conf
+nameserver 10.12.3.23
+
+=====================
+set syntax color in vi editor
+
+vi /etc/vim/vimrc
+
+append below command in this file.
+syntax on
+===========================
+
+adding alias in vi ~/.bashrc
+
+alias gtd='git diff'
+alias gts='git status'
+
+source ~/.bashrc
+
+=============================
+
+Zebm
+=======
+vi mplsd/cml/infomodel/mo_mpls.xml
+ >> cmlsh/cml/cli/mo_mpls_auto_cli.c
+nsm/cml/infomodel/cml_data_types.xml
+
+make cmlgenclean
+make clean-cmlsh
+make clmlgen
+make cmlsh
+make mplsd
+make cmld
+make imi
+
+scp cml_utility
+scp cmld
+scp cmlsh
+scp imi
+make 
+
+make clean-mplsd
+make clean-pal
+make all
+
+scp bin/* root@10.12.23.84:/usr/local/sbin/
+
+
+==============================
+conf t
+bridge 1 protocol ieee vlan-bridge
+vlan database
+vlan 100-105 bridge 1 state enable
+end
+
+conf t
+int eth1
+switchport
+bridge-group 1
+switchport mode trunk
+switchport trunk allowed vlan add 100
+no shut
+end
+============================
+cd /usr/local/sbin
+
+valgrind --log-file=/tmp/val_mplsd_log3.txt --tool=memcheck --leak-check=full ./bgpd
+============================
+conf t
+bridge 1 protocol ieee vlan-bridge
+vlan database
+vlan 100-104 bridge 1 state enable
+end
+
+conf t
+int eth7
+switchport
+bridge-group 1
+switchport mode trunk
+switchport trunk allowed vlan add 100
+no shut
+end
+
+
+s_int32_t
+evpn_esi_add (u_int32_t vr_id, char *ifname,
+              struct evpn_es **evpn_esi)
+{
+  struct evpn_es *tmp_evpn_esi = NULL;
+  struct interface *ifp = NULL;
+  s_int32_t ret = EVPN_SUCCESS;
+
+  ifp = ifg_lookup_by_name (&evpn_gbl->zg->ifg, ifname);
+  if (ifp == NULL)
+    return MPLS_API_ERR_IF_LOOKUP_FAIL;
+
+  if (!INTF_TYPE_L2(ifp))
+    return MPLS_ERR_EVPN_NOT_AN_L2_INTF;
+
+================================
+
+static int
+onm_nsm_recv_default_vid_pe_port (struct nsm_msg_header *header,
+                                 void *arg, void *message)
+{
+  u_int16_t svid;
+  u_int16_t pvid;
+  s_int32_t ret = RESULT_ERROR;
+  struct interface *ifp = NULL;
+  struct nsm_client * nc = NULL;
+  struct lib_globals *zg = NULL;
+  struct onmd_ifp *onm_if = NULL;
+  struct nsm_msg_vlan_port *msg = NULL;
+  struct nsm_client_handler * nch = NULL;
+
+  msg = message;
+  nch = arg;
+  nc = nch->nc;
+  zg = nc->zg;
+
+  if (zg == NULL || msg == NULL)
+    return RESULT_ERROR;
+
+  if ((ifp = ifg_lookup_by_index(&zg->ifg, msg->ifindex))
+      && (onm_if = ifp->info))
+    {
+      /* Extract vid. */
+      svid = msg->vid_info[0];
+      pvid = msg->vid_info[1];
+
+      ret = onm_set_default_vid_pe_port (onm_if, svid, pvid);
+    }
+
+  return ret;
+}
+
+=============default config=====================
+con ter
+interface lo
+ ip address 5.5.5.5/32
+ end
+con ter
+interface eth0
+ ip address 10.12.23.87/24
+end
+
+
+con term
+line vty 0 39
+exec-timeout 0 0
+end
+
+
+=====================ocnos======================================
+  462  mkdir ocnos
+  463  cd ocnos/
+  464  git clone http://10.12.3.45/gerrit/ZebOS8NG
+  465  cat /root/.ssh/id_rsa.pub
+  466  git config --l
+  467  git config -l
+  468  git clone http://10.12.3.45/gerrit/ZebOS8NG
+  469  rm ZebOS8NG/
+  470  rm -rf ZebOS8NG/
+  471  git clone http://10.12.3.45/gerrit/ZebOS8NG
+  472  cd ZebOS8NG/
+  473  cd ../
+  474  cd ZebOS8NG/
+  475  ls
+  476  git checkout ocnos-sp-master
+  477  ls
+  478  git branch
+  480  git config -l
+  486  ln -sf /usr/src/linux-headers-3.16.7-xp-2.1.0.1 linux-source
+  490  sed -i "/enable-flexlm/d"  config.opt/OCNOS/x86/OCNOS_DC_MPLS_ZEBM-x86-config.sh
+  491  sed -i "/enable-tbv/d"  config.opt/OCNOS/x86/OCNOS_DC_MPLS_ZEBM-x86-config.sh
+  492  vi config.opt/OCNOS/x86/OCNOS_DC_MPLS_ZEBM-x86-config.sh
+  495  source setup.sh
+  496  ./config.opt/OCNOS/x86/OCNOS_DC_MPLS_ZEBM-x86-config.sh
+  497  cd platform/linux/
+  498  make clean
+  499  make all
+
+ password: Zw5NaZgbuGZT
+ 
+ 
+==================================snmp_trap config for debain ===============================
+/etc/apt/sources.list
+deb http://httpredir.debian.org/debian jessie main
+deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb http://http.us.debian.org/debian stable main contrib non-free
+
+apt-get update
+apt-get install snmp
+apt-get install snmpd
+apt-get install snmp-mibs-downloader
+
+/etc/snmp/snmp.conf
+mibs +ALL
+
+snmpwalk -v2c -c test 10.12.22.6 pimStdMIB
+
+/etc/snmp/snmpd.conf
+---------------------
+smuxpeer 1.3.6.1.4.1.3317.1.2.2
+smuxpeer 1.3.6.1.4.1.3317.1.2.3
+smuxpeer 1.3.6.1.4.1.3317.1.2.5
+smuxpeer 1.3.6.1.4.1.3317.1.2.6
+smuxpeer 1.3.6.1.4.1.3317.1.2.8
+smuxpeer 1.3.6.1.4.1.3317.1.2.10
+smuxpeer 1.3.6.1.4.1.3317.1.2.11
+smuxpeer 1.3.6.1.4.1.3317.1.2.12
+smuxpeer 1.3.6.1.4.1.3317.1.2.15
+smuxpeer 1.3.6.1.4.1.3317.1.2.16
+smuxpeer 1.3.6.1.4.1.3317.1.2.7
+rwcommunity test
+#trapsink 10.11.2.25
+#trapsink 172.21.70.15
+master agentx
+agentXSocket tcp:localhost:705
+agentXTimeout  500
+authtrapenable 1
+
+Add below line in /etc/snmp/snmpd.conf
+---------------------------------------
+#we can specify any reachable ip and receive trap from there
+trap2sink 12.0.0.2 test 162
+
+
+Run below command in local machine
+------------------------------------
+snmpd -c /etc/snmp/snmpd.conf -C -d -x tcp:705
+
+
+Run below command on remote machine to recieve traps
+----------------------------------------------------
+tcpdump -i eth1
+
+
+
+snmpwalk -v2c -c test localhost 1.3.6.1.2.1.10.246
+
+
+https://stackoverflow.com/questions/30601532/snmp-c-implement-subtree-from-mib
+==============================================================================================================================
+  
+ 
+USING SNMPTRAPD:
+=================
+
+1. Modify the following config file as below
+==============================================
+
+[root@localhost mibs]# cat /etc/snmp/snmptrapd.conf
+# Example configuration file for snmptrapd
+#
+# No traps are handled by default, you must edit this file!
+#
+# authCommunity   log,execute,net public
+# traphandle SNMPv2-MIB::coldStart    /usr/bin/bin/my_great_script cold
+disableAuthorization yes
+[root@localhost mibs]#
+
+2. Start SNMP Trapd using the following command (This starts snmptrapd in listening mode)
+================================================
+sudo snmptrapd -f -Lo -c /etc/snmp/snmptrapd.conf
+
+3. Send a snmptrap from your machine: This is to send the snmp trap to the same machine.
+=====================================
+snmptrap -v 2c -c test localhost '' SNMPv2-MIB::coldStart
+
+
+
+USING TCPDUMP 
+==============
+Pre requisties - One back to back connection to recieve traps in another machine.
+
+Example:
+	  DUT 1 		     DUT2 (Your machine)
+	  (ETH1)--------------------(ETH1)
+	(10.10.10.2)		    (10.10.10.1)
+
+1. Enable hostpd
+
+2. Do the below configs.
+	a. Configure snmp community:
+		IBM(config)#snmp-server community test rw
+	b. Configure snmp host to recieve traps
+		IBM(config)#snmp-server host 10.10.10.2 traps version 2c test
+
+3. Listen on the other DUT1 interface as follows
+
+	Command --> tcpdump -i eth1
+
+The snmp trap packets will be captured here.
+
+To decode traps
+===============
+export MIB_DIRS="/usr/share/snmp/mibs"
+export MIBS+=ALL
+
+snmptrapd -Le -f
+
+
+
+
+==============================================Isis config=====================================================================================
+con ter
+interface lo
+ ip address 127.0.0.1/8
+ ip address 1.1.1.1/32 secondary
+ ipv6 address ::1/128
+ mtu 65536
+ end
+ 
+con ter
+interface eth1
+ ip address 10.15.51.67/31
+ label-switching
+ ip router isis 21949
+ end
+ 
+con ter
+router isis 21949
+ is-type level-2-only
+ metric-style transition
+ dynamic-hostname
+ net 00.0720.1505.0254.0000.00
+ end
+ 
+hostname OCNOS-1
+
+DEV1
+====
+con ter
+interface eth1
+ ip address 13.0.0.1/24
+ ip router isis 1
+end
+con ter
+ router isis 1
+ net 10.1111.1111.1111.00
+end
+
+DEV2
+====
+con ter
+interface eth1
+ ip address 13.0.0.2/24
+ ip router isis 1
+end
+con ter
+ router isis 1
+ net 10.1111.1111.1112.00
+end
+
+
+router isis 1
+ metric-style wide
+ mpls traffic-eng level-1
+ mpls traffic-eng level-2
+ net 10.1111.1111.1111.00
+ segment-routing mpls
+
+===================================================================================================================

@@ -1,0 +1,48 @@
+
+1)
+a) 
+b) ssh-keygen
+Add public key in git hub
+In github go to settings and add ssh public key
+
+1) git config --list
+
+user.name=Ramesh Yaga
+user.email=yramesh.448@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=git@github.com:rameshyaga/TcpServerLibrary.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+
+2)git add --all
+
+3) git commit -a
+--> opens up an editor for you to type commit message. 
+
+4) if you want to add all files you can use ` git add -a '
+
+5)Advanced Usage
+
+To streamline this process, Git offers the wildcard character asterisk *, which matches multiple files. For example, to add all files in your repository (excluding those in your .gitignore file):
+
+git add *
+
+For finer control, you can specify files by extension, like this:
+
+git add *.jpg
+
+Or to add all files within a specific folder:
+
+git add images/*
+
+6)git stash list
+git stash
+git stash list
+git status
+git fetch ssh://ramyag@gerrit.int.waystream.com/ibos refs/changes/21/5321/18 && git checkout FETCH_HEAD
+git stash apply
+git status
